@@ -8,7 +8,7 @@ const WatherAPI = {
     async getAll() {
         try {
             const response = await Axios.get('https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-CEA2C5AB-A654-4935-9F68-BC88687554CF');
-            return response.data;
+            return response.data.records;
         } catch (error) {
             console.error(error);
             throw error;

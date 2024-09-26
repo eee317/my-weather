@@ -1,0 +1,13 @@
+@import 'primeicons/primeicons.css';
+@import 'primevue/resources/themes/aura-light-amber/theme.css';
+
+
+@layer tailwind-base, primevue, tailwind-utilities;
+
+@layer tailwind-components {
+  @import 'tailwindcss/components';
+}
+
+@layer tailwind-utilities {
+  @import 'tailwindcss/utilities';
+}

@@ -3,12 +3,12 @@ const routes = [
     {
         path: '/',
         name: 'Layout',
-        component: () => import('../views/layout/Layout.vue'),
+        component: () => import('@/views/layout/Layout.vue'),
         children:[
             {
                 path:'/',
                 name: 'Index',
-                component: () => import('../views/Index.vue'),
+                component: () => import('@/views/Index.vue'),
             }
         ],
     }

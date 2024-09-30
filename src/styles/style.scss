@@ -2,7 +2,9 @@
 @import 'primevue/resources/themes/aura-light-amber/theme.css';
 
 
-@layer tailwind-base, primevue, tailwind-utilities;
+
+// @layer tailwind-base, tailwind-components, tailwind-utilities;
+@layer tailwind-base, components, tailwind-utilities;
 
 @layer tailwind-components {
   @import 'tailwindcss/components';
@@ -11,3 +13,110 @@
 @layer tailwind-utilities {
   @import 'tailwindcss/utilities';
 }
+
+
+  :root {
+    --primary-50: 236 241 247;
+    --primary-100: 210 222 235;
+    --primary-200: 174 195 218;
+    --primary-300: 128 161 197;
+    --primary-400: 75 122 174;
+    --primary-500: 19 80 148;
+    --primary-600: 17 67 129;
+    --primary-700: 14 53 109;
+    --primary-800: 12 40 88;
+    --primary-900: 9 26 68;
+
+    --secondary-50: 235 248 249;
+    --secondary-100: 207 237 240;
+    --secondary-200: 167 223 227;
+    --secondary-300: 118 205 211;
+    --secondary-400: 61 184 193;
+    --secondary-500: 0 162 174;
+    --secondary-600: 0 137 151;
+    --secondary-700: 0 112 127;
+    --secondary-800: 0 86 103;
+    --secondary-900: 0 60 78;
+
+    --secondary-font: 255 255 255;
+    --link-blue: 0 87 255;
+
+    --surface-0: 255 255 255;
+    --surface-50: 245 244 242;
+    --surface-100: 235 235 235;
+    --surface-200: 224 224 224;
+    --surface-300: 201 201 201;
+    --surface-400: 171 171 171;
+    --surface-500: 136 136 136;
+    --surface-600: 118 118 118;
+    --surface-700: 83 83 83;
+    --surface-800: 46 46 46;
+    --surface-900: 22 22 22;
+
+    --danger-100: 255 209 209;
+    --danger-200: 255 193 193;
+    --danger-300: 255 173 173;
+    --danger-400: 255 68 68;
+    --danger-500: 255 0 0;
+    --danger-600: 208 0 0;
+
+    --yellow-50: 245 252 232;
+    --yellow-100: 254 249 195;
+    --yellow-200: 254 240 138;
+    --yellow-300: 253 224 71;
+    --yellow-400: 250 204 21;
+    --yellow-500: 234 179 8;
+    --yellow-600: 202 138 4;
+    --yellow-700: 161 98 7;
+    --yellow-800: 133 77 14;
+    --yellow-900: 113 63 18;
+
+    --chart-1: 68 186 171;
+    --chart-2: 52 133 225;
+    --chart-3: 255 203 70;
+    --chart-4: 134 97 237;
+    --chart-5: 240 129 31;
+    --chart-6: 236 91 86;
+    --chart-7: 169 208 213;
+    --chart-8: 57 86 129;
+    --chart-9: 55 124 112;
+
+    --table-blue-100:235 243 252;
+    --table-blue-200:214 231 249;
+    --table-blue-500:154 194 240;
+    --table-blue-800:52 133 225;
+    --table-blue-900:45 118 202;
+    --table-orange-100:254 243 233;
+    --table-orange-200:252 230 210;
+    --table-orange-300:255 222 192;
+    --table-orange-500:248 192 143;
+    --table-orange-800:240 129 31;
+    --table-orange-900:226 120 27;
+    --table-green-200:218 241 238;
+    --table-green-500:162 221 213;
+    --table-green-800:31 186 165;
+    --table-green-900:33 164 146;
+
+    /* Color Palette */
+    --palette-blue: 19 80 148;
+    --palette-blue-secondary: 0 162 174;
+
+    --palette-green: 25 143 84;
+    --palette-green-secondary: 255 151 56;
+
+    --palette-pink: 226 81 104;
+    --palette-pink-secondary: 144 134 222;
+
+    --palette-orange: 238 103 0;
+    --palette-orange-secondary: 255 222 139;
+
+    --palette-sky: 16 142 233;
+    --palette-sky-secondary: 255 206 82;
+
+    --palette-brown: 106 98 84;
+    --palette-brown-secondary: 83 174 108;
+
+    --palette-purple: 97 87 190;
+    --palette-purple-secondary: 105 180 206;
+  }
+

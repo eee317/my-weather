@@ -67,7 +67,6 @@ const onRowCollapse = (event) => {
 };
 const onRowSelect = (event, isNew = false) => {
   console.log('event', event)
-  console.log(77788855555)
 }
 // function setExpandedRow($event) {
 //     // check if row expanded before click of not

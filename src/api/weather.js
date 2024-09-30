@@ -40,7 +40,7 @@ const WeatherAPI = {
             '連江縣': 'F-D0047-081',
         }
         try {
-            const response = await Axios.get(`https://opendata.cwa.gov.tw/api/v1/rest/datastore/${cityToId[cityName]}${import.meta.env.VITE_AUTH_CODE}`);
+            const response = await Axios.get(`https://opendata.cwa.gov.tw/api/v1/rest/datastore/${cityToId[cityName]}?Authorization=${import.meta.env.VITE_AUTH_CODE}`);
             return response.data.records;
         } catch (error) {
             console.error(error);

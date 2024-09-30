@@ -10,7 +10,10 @@ import ToastService from 'primevue/toastservice'
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   // optional
-import Row from 'primevue/row';                   // optional
+import Row from 'primevue/row'; 
+import Toolbar from 'primevue/toolbar';
+import Menu from 'primevue/menu';
+import SelectButton from 'primevue/selectbutton';                  // optional
 
 import App from './App.vue'
 import './styles/style.scss'
@@ -30,5 +33,8 @@ app.component('DataTable', DataTable);
 app.component('Column', Column);
 app.component('ColumnGroup', ColumnGroup);
 app.component('Row', Row);
+app.component('Toolbar', Toolbar);
+app.component('Menu', Menu);
+app.component('SelectButton', SelectButton);
 
 app.mount('#app');

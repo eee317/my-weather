@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const WatherAPI = {
+const WeatherAPI = {
     /**
      * get
      * @description 取得所有縣市當日三天的天氣API
@@ -48,4 +48,4 @@ const WatherAPI = {
         }
     },
 };
-export default WatherAPI;
+export default WeatherAPI;

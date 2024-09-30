@@ -1,15 +1,15 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useToast } from "primevue/usetoast";
-import WatherAPI from "@/api/wather";
+import WeatherAPI from "@/api/weather";
 import DataTable from "primevue/datatable";
 
 const toast = useToast();
 const citys = ref([]);
 const city = ref([]);
 const expandedRows = ref({});
-const getAllWather = async () => {
-  await WatherAPI.getAll()
+const getAllWeather = async () => {
+  await WeatherAPI.getAll()
     .then((res) => {
       citys.value = res.location;
       console.log(citys.value);
@@ -19,8 +19,8 @@ const getAllWather = async () => {
     })
     .finally(() => {});
 };
-const getCityWather = async (cityName) => {
-  await WatherAPI.getCity(cityName)
+const getCityWeather = async (cityName) => {
+  await WeatherAPI.getCity(cityName)
     .then((res) => {
       const cityObj = {
         locationName: cityName,
@@ -57,7 +57,7 @@ const onRowExpand = (event) => {
     toast.add({ severity: 'info', summary: 'Product Expanded', detail: event.data.locationName, life: 3000 });
     const isTrue = city.value.some(item => item.locationName === event.data.locationName); //已經有串接過API的，就不要再觸發
     if(isTrue === false){
-      getCityWather(event.data.locationName);
+      getCityWeather(event.data.locationName);
     }
 };
 const onRowCollapse = (event) => {
@@ -78,7 +78,7 @@ const onRowSelect = (event, isNew = false) => {
 // }
 
 onMounted(() => {
-  getAllWather();
+  getAllWeather();
 });
 </script>
 <template>

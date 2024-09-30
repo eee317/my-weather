@@ -1,8 +1,8 @@
 <script setup>
-    import AllCityWatherDataTabe from '@/components/AllCityWatherDataTabe.vue';
+    import AllCityWeatherDataTabe from '@/components/AllCityWeatherDataTabe.vue';
 
 
 </script>
 <template>
-    <AllCityWatherDataTabe></AllCityWatherDataTabe>
+    <AllCityWeatherDataTabe></AllCityWeatherDataTabe>
 </template>

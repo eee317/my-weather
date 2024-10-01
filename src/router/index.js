@@ -14,6 +14,11 @@ const routes = [
                 path:'/WeatherTable',
                 name: 'WeatherTable',
                 component: () => import('@/views/WeatherTable.vue'),
+            },
+            {
+                path:'/Earthquake',
+                name: 'Earthquake',
+                component: () => import('@/views/EarthquakePage.vue'),
             }
         ],
     }

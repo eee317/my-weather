@@ -1,7 +1,7 @@
 <script setup>
-import ColorPalette from '@/components/ColorPalette.vue';
+import MyToolbar from '@/components/MyToolbar.vue';
 </script>
 <template>
-    <ColorPalette></ColorPalette>
+    <MyToolbar></MyToolbar>
     <RouterView />
 </template>

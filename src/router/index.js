@@ -9,6 +9,11 @@ const routes = [
                 path:'/',
                 name: 'Index',
                 component: () => import('@/views/Index.vue'),
+            },
+            {
+                path:'/WeatherTable',
+                name: 'WeatherTable',
+                component: () => import('@/views/WeatherTable.vue'),
             }
         ],
     }

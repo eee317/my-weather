@@ -5,6 +5,9 @@ module.exports = {
     "./src/**/*"
   ],
   theme: {
+    screens:{
+      xl: '1920px',
+    },
     extend: {
       colors: {
         /* -----link color----- */

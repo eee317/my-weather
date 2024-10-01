@@ -1,10 +1,13 @@
 <script setup>
-    import AllCityWeatherDataTabe from '@/components/AllCityWeatherDataTabe.vue';
+import { RouterLink } from 'vue-router';
+
+    
     
 </script>
 <template>
-    <AllCityWeatherDataTabe></AllCityWeatherDataTabe>
-     <Button label="test" severity="secondary"></Button>
-     <Button label="test" ></Button>
+    
+    <RouterLink :to="{ name: 'WeatherTable'}">
+        <Button label="查看更多天氣" text plain />
+    </RouterLink>
     
 </template>

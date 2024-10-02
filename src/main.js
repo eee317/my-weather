@@ -1,9 +1,11 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+
 import router from './router';
 
 import PrimeVue from 'primevue/config';
 import Aura from '@/thePreset/preset';      //import preset
-//import CustomAura from '@/thePreset/customPreset';
+//import CustomAura from '@/thePreset/customPreset'; 
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
@@ -25,8 +27,9 @@ import SplitterPanel from 'primevue/splitterpanel';
 import App from './App.vue'
 import './styles/style.scss'
 
-
+const pinia = createPinia();
 const app = createApp(App);
+app.use(pinia);
 app.use(router);
 app.use(PrimeVue,{
   unstyled: true,

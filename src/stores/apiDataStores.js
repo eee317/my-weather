@@ -9,4 +9,8 @@ export const useApiDataStore = defineStore('apiDataStore', {
             this.earthquakeData = data;
         },
     },
+    persist: {
+      key: 'my-api-data',
+  },
+    
 });

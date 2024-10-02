@@ -16,7 +16,7 @@ const routes = [
                 component: () => import('@/views/WeatherTable.vue'),
             },
             {
-                path:'/Earthquake',
+                path:'/Earthquake/:EarthquakeNo',
                 name: 'Earthquake',
                 component: () => import('@/views/EarthquakePage.vue'),
             }

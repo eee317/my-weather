@@ -2,7 +2,7 @@
 import { onMounted, ref } from "vue";
 import { useToast } from "primevue/usetoast";
 import WeatherAPI from "@/api/weather";
-import DataTable from "primevue/datatable";
+
 
 const toast = useToast();
 const citys = ref([]);

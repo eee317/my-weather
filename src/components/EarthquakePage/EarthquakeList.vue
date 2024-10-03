@@ -1,15 +1,49 @@
 <script setup>
-import {defineProps} from 'vue';
+import { useRouter } from 'vue-router';
+import {ref, defineProps, onMounted, watch, defineEmits} from 'vue';
+import { nextTick } from 'vue';
 import { matchDate, resultTitle, resultColor } from '@/utils/utils';
-defineProps({
+const props = defineProps({
     data: {
-        type: Object,
-        default: () => {},
+        type: Array,
+        default: () => [],
     },
+    params:{
+        type: String,
+        default: '',
+    }
 });
+
+const selectedData = ref([]);
+const emit = defineEmits(['updateValue']);
+const router = useRouter();
+const navigateTo = (EarthquakeNo) => {
+  router.push({ 
+    name:'Earthquake', params:{ EarthquakeNo } 
+  });
+};
+
+watch(selectedData, (newValue) => {
+  console.log('newData', newValue)
+  console.log('newValue.EarthquakeNo', newValue.EarthquakeNo)
+    if (newValue.EarthquakeNo != undefined) {
+      emit('updateValue', selectedData.value);
+      const earthquakeNo = newValue.EarthquakeNo;
+      navigateTo(earthquakeNo);
+    }
+});
+
+onMounted( async ()=>{
+  await nextTick();
+  selectedData.value = props.data.filter(items => {
+    return items.EarthquakeNo === parseInt(props.params, 10)
+  })
+  emit('updateValue', selectedData.value[0]);
+})
 </script>
 <template>
-  <DataTable :value="data" tableStyle="">
+    <DataTable :value="props.data" tableStyle=""
+   v-model:selection="selectedData" selectionMode="single" dataKey="EarthquakeNo">
     <Column style="width: 3%">
       <template #body="slotProps">
         <div class="rounded-full mx-auto w-2 h-2" :class="resultColor(slotProps.data.ReportColor)"></div>

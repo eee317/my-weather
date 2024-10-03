@@ -24,6 +24,8 @@ import Divider from 'primevue/divider';
 import Dialog from 'primevue/dialog';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
+import Image from 'primevue/image';
+
 
 import App from './App.vue'
 import './styles/style.scss'
@@ -54,5 +56,6 @@ app.component('Divider', Divider);
 app.component('Dialog', Dialog);
 app.component('Splitter', Splitter);
 app.component('SplitterPanel', SplitterPanel);
+app.component('Image', Image);
 
 app.mount('#app');

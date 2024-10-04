@@ -13,25 +13,23 @@
 
   const leftSide= ref(15);
   const rightSide= ref(85);
-  const togglePanel = () => {
+
   // 切換 leftSide 的值
-  leftSide.value = leftSide.value === 0 ? 15 : 0;
-  rightSide.value = rightSide.value === 100 ? 85 : 100;
-};
+  const togglePanel = () => {
+    leftSide.value = leftSide.value === 0 ? 15 : 0;
+    rightSide.value = rightSide.value === 100 ? 85 : 100;
+  };
 
 
-
-const updateEarthquakeNo = (newValue) => {
-  selectedDataMain.value = newValue
-  console.log('selectedDataMain.value_COMP222', newValue)
-}
+// 子層 emit 回來的值
+  const updateEarthquakeNo = (newValue) => {
+    selectedDataMain.value = newValue
+    console.log('selectedDataMain.value_COMP222', newValue)
+  }
 
 onMounted(()=>{
   const { EarthquakeNo } = route.params;
   theEarthquakeNo.value = EarthquakeNo;
-  // selectedDataMain.value = useDataStore.earthquakeData.filter(items => {
-  //   return items.EarthquakeNo === parseInt(theEarthquakeNo.value, 10)
-  // })
   console.log('comp_selectedData.value',selectedDataMain.value )
   console.log('comp', EarthquakeNo)
 })
@@ -40,7 +38,7 @@ onMounted(()=>{
 </script>
 <template>
   <div class="card">
-      <Splitter >
+      <Splitter>
           <SplitterPanel class="p-4 flex align-items-center justify-content-center" 
           :size="leftSide" :minSize="10" > 
             <EarthquakeList :data="useDataStore.earthquakeData" :params="theEarthquakeNo" @updateValue="updateEarthquakeNo"></EarthquakeList>
@@ -48,7 +46,7 @@ onMounted(()=>{
 
           <SplitterPanel class="p-4" :size="rightSide" >
           
-            <Button type="button" @click="togglePanel">縮合 {{ rightSide }}</Button>
+            <!-- <Button type="button" @click="togglePanel">縮合 {{ rightSide }}</Button> -->
             
             <EarthquakContent :selectedDataMain="selectedDataMain"></EarthquakContent>
           </SplitterPanel>

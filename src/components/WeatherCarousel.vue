@@ -1,215 +1,60 @@
 <script setup>
-import { ref, onMounted  } from "vue";
-  const dataValue = [{
-    "locationName": "嘉義縣",
-    "weatherElement": [
-        {
-            "elementName": "Wx",
-            "time": [
-                {
-                    "startTime": "2024-10-01 12:00:00",
-                    "endTime": "2024-10-01 18:00:00",
-                    "parameter": {
-                        "parameterName": "陰短暫陣雨或雷雨",
-                        "parameterValue": "18"
-                    }
-                },
-                {
-                    "startTime": "2024-10-01 18:00:00",
-                    "endTime": "2024-10-02 06:00:00",
-                    "parameter": {
-                        "parameterName": "陰短暫陣雨或雷雨",
-                        "parameterValue": "18"
-                    }
-                },
-                {
-                    "startTime": "2024-10-02 06:00:00",
-                    "endTime": "2024-10-02 18:00:00",
-                    "parameter": {
-                        "parameterName": "陰短暫陣雨或雷雨",
-                        "parameterValue": "18"
-                    }
-                }
-            ]
-        },
-        {
-            "elementName": "PoP",
-            "time": [
-                {
-                    "startTime": "2024-10-01 12:00:00",
-                    "endTime": "2024-10-01 18:00:00",
-                    "parameter": {
-                        "parameterName": "30",
-                        "parameterUnit": "百分比"
-                    }
-                },
-                {
-                    "startTime": "2024-10-01 18:00:00",
-                    "endTime": "2024-10-02 06:00:00",
-                    "parameter": {
-                        "parameterName": "60",
-                        "parameterUnit": "百分比"
-                    }
-                },
-                {
-                    "startTime": "2024-10-02 06:00:00",
-                    "endTime": "2024-10-02 18:00:00",
-                    "parameter": {
-                        "parameterName": "60",
-                        "parameterUnit": "百分比"
-                    }
-                }
-            ]
-        },
-        {
-            "elementName": "MinT",
-            "time": [
-                {
-                    "startTime": "2024-10-01 12:00:00",
-                    "endTime": "2024-10-01 18:00:00",
-                    "parameter": {
-                        "parameterName": "29",
-                        "parameterUnit": "C"
-                    }
-                },
-                {
-                    "startTime": "2024-10-01 18:00:00",
-                    "endTime": "2024-10-02 06:00:00",
-                    "parameter": {
-                        "parameterName": "27",
-                        "parameterUnit": "C"
-                    }
-                },
-                {
-                    "startTime": "2024-10-02 06:00:00",
-                    "endTime": "2024-10-02 18:00:00",
-                    "parameter": {
-                        "parameterName": "26",
-                        "parameterUnit": "C"
-                    }
-                }
-            ]
-        },
-        {
-            "elementName": "CI",
-            "time": [
-                {
-                    "startTime": "2024-10-01 12:00:00",
-                    "endTime": "2024-10-01 18:00:00",
-                    "parameter": {
-                        "parameterName": "悶熱"
-                    }
-                },
-                {
-                    "startTime": "2024-10-01 18:00:00",
-                    "endTime": "2024-10-02 06:00:00",
-                    "parameter": {
-                        "parameterName": "悶熱"
-                    }
-                },
-                {
-                    "startTime": "2024-10-02 06:00:00",
-                    "endTime": "2024-10-02 18:00:00",
-                    "parameter": {
-                        "parameterName": "舒適至悶熱"
-                    }
-                }
-            ]
-        },
-        {
-            "elementName": "MaxT",
-            "time": [
-                {
-                    "startTime": "2024-10-01 12:00:00",
-                    "endTime": "2024-10-01 18:00:00",
-                    "parameter": {
-                        "parameterName": "32",
-                        "parameterUnit": "C"
-                    }
-                },
-                {
-                    "startTime": "2024-10-01 18:00:00",
-                    "endTime": "2024-10-02 06:00:00",
-                    "parameter": {
-                        "parameterName": "29",
-                        "parameterUnit": "C"
-                    }
-                },
-                {
-                    "startTime": "2024-10-02 06:00:00",
-                    "endTime": "2024-10-02 18:00:00",
-                    "parameter": {
-                        "parameterName": "29",
-                        "parameterUnit": "C"
-                    }
-                }
-            ]
-        }
-    ]
-}]
+import { ref, onMounted, watch,   } from "vue";
+import WeatherAPI from "@/api/weather";
+import { getCitysImg } from "@/utils/cityImgUtils";
+import { useApiDataStore } from '@/stores/apiDataStores';
 
-const dataValue2=ref([
-                {
-                    id: '1000',
-                    code: 'f230fh0g3',
-                    name: '台北市',
-                    description: 'Product Description',
-                    image: 'bamboo-watch.jpg',
-                    price: 65,
-                    category: 'Accessories',
-                    quantity: 24,
-                    inventoryStatus: 'INSTOCK',
-                    rating: 5
-                },
-                {
-                    id: '1001',
-                    code: 'nvklal433',
-                    name: '新北市',
-                    description: 'Product Description',
-                    image: 'black-watch.jpg',
-                    price: 72,
-                    category: 'Accessories',
-                    quantity: 61,
-                    inventoryStatus: 'INSTOCK',
-                    rating: 4
-                },
-                {
-                    id: '1002',
-                    code: 'zz21cz3c1',
-                    name: '新竹市',
-                    description: 'Product Description',
-                    image: 'blue-band.jpg',
-                    price: 79,
-                    category: 'Fitness',
-                    quantity: 2,
-                    inventoryStatus: 'LOWSTOCK',
-                    rating: 3
-                },
-                {
-                    id: '1003',
-                    code: '244wgerg2',
-                    name: '台南市',
-                    description: 'Product Description',
-                    image: 'blue-t-shirt.jpg',
-                    price: 29,
-                    category: 'Clothing',
-                    quantity: 25,
-                    inventoryStatus: 'INSTOCK',
-                    rating: 5
-                },
-                {
-                    id: '1004',
-                    code: 'h456wer53',
-                    name: 'Bracelet',
-                    description: 'Product Description',
-                    image: 'bracelet.jpg',
-                    price: 15,
-                    category: 'Accessories',
-                    quantity: 73,
-                    inventoryStatus: 'INSTOCK',
-                    rating: 4
-                },])
+const useDataStore = useApiDataStore();
+const citys = ref([]);
+const city = ref([]);
+const cityFormat = ref([]);
 
+const cityDoFormat = (city) => {
+    cityFormat.value = city.map((item)=>{
+        
+    })
+}
+
+const getAllWeather = async () => {
+  await WeatherAPI.getAll()
+    .then((res) => {
+      citys.value = res.location;
+      useDataStore.setWeatherAllCityData(citys.value)
+      console.log(citys.value);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {});
+};
+
+const getCityWeather = async (cityName) => {
+  await WeatherAPI.getCity(cityName)
+  .then((res) => {
+    const cityObj = {
+      locationName: cityName,
+      location: res.locations[0].location,
+    };
+    city.value.push(cityObj);
+    console.log("push", city.value);
+    console.log("res", res);
+  });
+};
+
+
+
+const getWeatcherSeverity = (status) => {
+    switch (status) {
+        case '舒適':
+            return 'success';
+
+        case '舒適至悶熱':
+            return 'warning';
+
+        default:
+            return null;
+    }
+};
 
 const responsiveOptions = ref([
     {
@@ -234,50 +79,70 @@ const responsiveOptions = ref([
     }
 ]);
 
+onMounted(() => {
+  getAllWeather();
+});
 
-const getSeverity = (status) => {
-    switch (status) {
-        case 'INSTOCK':
-            return 'success';
-
-        case 'LOWSTOCK':
-            return 'warning';
-
-        case 'OUTOFSTOCK':
-            return 'danger';
-
-        default:
-            return null;
-    }
-};
 
 // Dialog
-const visible = ref(false);
+const carouselAut = ref(1500);
+const isDialog = ref(false);
+const dialogData = ref([]);
+
+
+const onDialog = async ( cityName ) => {
+    console.log('cityName', cityName)
+    
+    isDialog.value = true;
+
+    const isTrue = city.value.some((item) => item.locationName === cityName); 
+    //已經有串接過API的，就不要再觸發
+
+    if (isTrue === false) {
+        await getCityWeather(cityName);
+    }
+    dialogData.value = city.value.filter(item => item.locationName === cityName);
+    console.log('dialogData.value', dialogData.value[0])
+}
+
+watch(isDialog, newValue => {
+    if(newValue){
+        carouselAut.value = 10000000000000;
+    }else{
+        carouselAut.value = 1500;
+    }
+})
+
 </script>
 <template>
-
-  <Carousel :value="dataValue2" :numVisible="3" :numScroll="3" :responsiveOptions="responsiveOptions" circular :autoplayInterval="3000" class="mt-3">
+    <Carousel :value="citys" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" circular :autoplayInterval="carouselAut" 
+    class="mt-3" 
+    >
     <template #item="slotProps">
-        <div class="border-1 surface-border border-round m-2 p-3"  @click="visible = true">
+        <div class="border-1 surface-border border-round m-2 p-3"  @click="onDialog(slotProps.data.locationName)">
             <div class="mb-3">
-                <div class="relative mx-auto">
-                    <img :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.data.image" :alt="slotProps.data.name" class="w-full border-round"  style="width:250px;"/>
-                    <Tag :value="slotProps.data.inventoryStatus" :severity="getSeverity(slotProps.data.inventoryStatus)" class="absolute" style="left:5px; top: 5px"/>
+                <div class="relative  mx-auto overflow-x-hidden pt-[60%] "style="width:400px;">
+                    <img 
+                    :src="getCitysImg(slotProps.data.locationName)" :alt="slotProps.data.locationName" class="border-round rounded-md absolute inset-0 object-cover w-full h-full"  />
+                    <Tag :value="slotProps.data.weatherElement[3].time[0].parameter.parameterName" :severity="getWeatcherSeverity(slotProps.data.weatherElement[3].time[0].parameter.parameterName)" class="absolute" style="left:12px; top: 12px"/>
                 </div>
             </div>
-            <div class="mb-3 font-medium">{{ slotProps.data.name }}</div>
+            <p class="mb-3 mt-0 font-black text-xl">{{ slotProps.data.locationName }}</p>
             <div class="flex justify-between align-items-center">
-                <!-- <div class="mt-0 font-semibold">${{ slotProps.data.price }}</div> -->
-                <p class="mt-0 font-semibold">晴天</p>
-                <p class="mt-0 font-semibold">降雨機率 10%</p>
+                
+                <p class="mt-0 mb-1">{{ slotProps.data.weatherElement[0].time[0].parameter.parameterName }}</p>
+                <p  class="mt-0 ">{{ slotProps.data.weatherElement[2].time[0].parameter.parameterName }} ~ {{ slotProps.data.weatherElement[4].time[0].parameter.parameterName }}度</p>
             </div>
         </div>
     </template>
 </Carousel>
 
-<Dialog v-model:visible="visible" modal header="Edit Profile" :style="{ width: '25rem' }">
-    <span class="p-text-secondary block mb-5">Update your information.</span>
-    <div class="flex align-items-center gap-3 mb-3">
+<Dialog v-model:visible="isDialog" modal :header="dialogData[0]?.locationName" :style="{ width: '1200px' }">
+    <DataTable :value="dialogData[0]?.location" dataKey="locationName">
+        <Column field="locationName" header="縣市名稱"></Column>
+        
+    </DataTable>
+    <!-- <div class="flex align-items-center gap-3 mb-3">
         <label for="username" class="font-semibold w-6rem">Username</label>
         <InputText id="username" class="flex-auto" autocomplete="off" />
     </div>
@@ -286,9 +151,9 @@ const visible = ref(false);
         <InputText id="email" class="flex-auto" autocomplete="off" />
     </div>
     <div class="flex justify-content-end gap-2">
-        <Button type="button" label="Cancel" severity="secondary" @click="visible = false"></Button>
-        <Button type="button" label="Save" @click="visible = false"></Button>
-    </div>
+        <Button type="button" label="Cancel" severity="secondary" @click="isDialog = false"></Button>
+        <Button type="button" label="Save" @click="isDialog = false"></Button>
+    </div> -->
 </Dialog>
 
 

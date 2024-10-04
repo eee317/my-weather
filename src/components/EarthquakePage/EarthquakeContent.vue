@@ -37,7 +37,7 @@ const imageSrc = computed(() => {
     
     <p class="text-3xl mt-0 leading-normal	">{{ resultTitle(props.selectedDataMain.ReportContent) }}</p>
     <a :href="props.selectedDataMain.Web" target="_blank" rel="noopener">
-      <Button type="button" label="前往中央氣象署網站查看"></Button>
+      <Button type="button" label="前往中央氣象署網站查看"  ></Button>
     </a>
     <SelectButton class="mt-3" v-model="imgValue" :options="options" aria-labelledby="basic" />
     <p class="mt-2 mb-1"> ✻ {{ props.selectedDataMain.ReportRemark }}</p>
@@ -58,9 +58,5 @@ const imageSrc = computed(() => {
       }"
       class="mt-2 " :src="imageSrc" alt="Image" preview/>
     </div>
-    
-   
-    <p>{{ props.selectedDataMain }}</p>
-    
   </div>
 </template>

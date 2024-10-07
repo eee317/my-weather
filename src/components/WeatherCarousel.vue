@@ -144,8 +144,9 @@ watch(isDialog, newValue => {
     </template>
 </Carousel>
 
-<Dialog v-model:visible="isDialog" modal :header="dialogData[0]?.locationName" :style="{ width: '1200px' }">
-    <DataTable :value="dialogData[0]?.location" dataKey="locationName" >
+<Dialog v-model:visible="isDialog" modal :header="dialogData[0]?.locationName" class="w-[900px]">
+    <DataTable stripedRows scrollable scrollHeight="400px"
+    :value="dialogData[0]?.location" dataKey="locationName" >
         <Column class="text-center" field="locationName" header="縣市名稱"></Column>
         <Column class="text-center" field="天氣現象" header="天氣現象"></Column>
         <Column class="text-center" field="舒適度" header="舒適度"></Column>

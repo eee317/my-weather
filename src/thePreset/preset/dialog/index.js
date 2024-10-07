@@ -8,7 +8,7 @@ export default {
 
       // Size
       'max-h-[90vh]',
-      'max-w-full',
+      'max-w-full pt-6 px-6 pb-10 bg-white',
       { 'm-5': !state.maximized },
 
       // Color
@@ -59,7 +59,7 @@ export default {
       'flex items-center justify-center',
 
       // Size and Spacing
-      'mr-2',
+      'mr-2 ',
       'last:mr-0',
       'w-8 h-8',
 

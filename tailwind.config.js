@@ -5,6 +5,10 @@ module.exports = {
     "./src/**/*"
   ],
   theme: {
+    screens:{
+      xl: '1920px',
+      lg: '1440px',
+    },
     extend: {
       colors: {
         /* -----link color----- */

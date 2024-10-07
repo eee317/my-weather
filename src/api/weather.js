@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import { useLoadingStore } from '@/stores/loading';
 
 const WeatherAPI = {
     /**
@@ -6,15 +7,28 @@ const WeatherAPI = {
      * @description 取得所有縣市當日三天的天氣API
      */
     async getAll() {
+        const loadingStore = useLoadingStore();
         try {
+            loadingStore.setLoading(true);
+            console.log(loadingStore.isLoading)
             const response = await Axios.get(`https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${import.meta.env.VITE_AUTH_CODE}`);
             return response.data.records;
         } catch (error) {
             console.error(error);
             throw error;
+        }finally {
+            loadingStore.setLoading(false); // 完成後設為 false
+            console.log(loadingStore.isLoading)
         }
     },
+
+    /**
+     * get
+     * @param {String} cityName 縣市名稱
+     * @description 利用縣市名稱對應 API 路徑，取得這個縣市的鄉鎮資料
+     */
     async getCity(cityName) {
+        
         const cityToId = {
             '嘉義縣': 'F-D0047-029',
             '新北市': 'F-D0047-069',
@@ -39,12 +53,16 @@ const WeatherAPI = {
             '彰化縣': 'F-D0047-017',
             '連江縣': 'F-D0047-081',
         }
+        const loadingStore = useLoadingStore();
         try {
+            loadingStore.setLoading(true);
             const response = await Axios.get(`https://opendata.cwa.gov.tw/api/v1/rest/datastore/${cityToId[cityName]}?Authorization=${import.meta.env.VITE_AUTH_CODE}`);
             return response.data.records;
         } catch (error) {
             console.error(error);
             throw error;
+        }finally {
+            loadingStore.setLoading(false); // 完成後設為 false
         }
     },
 };

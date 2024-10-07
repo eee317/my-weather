@@ -96,7 +96,8 @@ export default {
 
       // Size
       {
-        'w-full sm:w-[50%] md:w-[33.333333333333336%]': props.orientation !== 'vertical',
+        //w-full
+        ' sm:w-[50%] md:w-[33.333333333333336%]': props.orientation !== 'vertical',
 
         'w-full h-full': props.orientation == 'vertical',
       },
@@ -119,7 +120,7 @@ export default {
   indicators: {
     class: [
       // Flexbox & Alignment
-      'flex flex-row justify-center flex-wrap',
+      'flex flex-row justify-center flex-wrap list-none ',
     ],
   },
   indicator: {
@@ -131,7 +132,7 @@ export default {
   indicatorbutton: ({ context }) => ({
     class: [
       // Sizing & Shape
-      'w-8 h-2 rounded-0',
+      'w-8 h-2 rounded-0 border-none rounded-md',
 
       // Transitions
       'transition duration-200',

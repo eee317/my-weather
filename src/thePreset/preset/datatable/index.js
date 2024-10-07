@@ -1454,13 +1454,15 @@ export default {
         ],
       },
       list: {
-        class: 'py-3 list-none m-0',
+        //py-3
+        class: 'p-[unset] list-none m-0',
       },
       item: ({ context }) => ({
         class: [
           // Font
           'font-normal',
           'leading-none',
+          'first-of-type:hover:rounded-t last:hover:rounded-b', //新增 border-radius
 
           // Position
           'relative',
@@ -1675,7 +1677,7 @@ export default {
           { 'text-surface-700 dark:text-white/80': !context.focused && !context.selected },
           { 'bg-surface-50 dark:bg-surface-600/60 text-surface-700 dark:text-white/80': context.focused && !context.selected },
           { 'bg-primary-100 dark:bg-primary-400/40 text-primary-700 dark:text-white/80': context.focused && context.selected },
-          { 'bg-primary-50 dark:bg-primary-400/40 text-primary-700 dark:text-white/80': !context.focused && context.selected },
+          { 'bg-primary-50 dark:bg-primary-400/40 text-primary-700 dark:text-white/80 ': !context.focused && context.selected },
 
           //States
           { 'hover:bg-surface-100 dark:hover:bg-surface-600/80': !context.focused && !context.selected },

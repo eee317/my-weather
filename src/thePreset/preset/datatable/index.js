@@ -1462,7 +1462,7 @@ export default {
           // Font
           'font-normal',
           'leading-none',
-          'first-of-type:hover:rounded-t last:hover:rounded-b', //新增 border-radius
+          'first-of-type:hover:rounded-t first-of-type:rounded-t last:hover:rounded-b last:rounded-b', //新增 border-radius
 
           // Position
           'relative',

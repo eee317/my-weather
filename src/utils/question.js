@@ -71,3 +71,78 @@ export const qaGetInf =
     {value:"都沒有，我不用獲取天氣預報", key:"none"},
   ]
 }
+
+export const qaCheckTimes =
+{
+  questionId:'2024100805',
+  question: "您每天會檢查天氣預報幾次？",
+  options: [
+    {value:"0 次", key:"0次"},
+    {value:"1 次", key:"1次"},
+    {value:"2 次", key:"2次"},
+    {value:"3 次及以上", key:">3次"},
+  ]
+}
+
+export const qaImportant =
+{
+  questionId:'2024100806',
+  question: "您認為天氣預報對您日常活動安排的重要性如何？",
+  options: [
+    {value:"非常重要", key:"4分"},
+    {value:"重要", key:"3分"},
+    {value:"普通", key:"2分"},
+    {value:"不重要", key:"1分"},
+  ]
+}
+
+export const qaReason =
+{
+  questionId:'2024100807',
+  question: "您通常會因哪些原因關注天氣變化？",
+  otherQuestion: "請說明",
+  options: [
+    {value:"安排戶外活動", key:"安排活動"},
+    {value:"旅遊計畫", key:"旅遊"},
+    {value:"工作需求", key:"工作"},
+    {value:"決定穿著", key:"穿著"},
+    {value:"防範極端天氣", key:"防範天氣"},
+    {value:"其他", key:"Other"},
+  ]
+}
+
+export const qaUseService =
+{
+  questionId:'2024100808',
+  question: "您有沒有使用過氣象警報服務？",
+  options: [
+    {value:"有，並且經常使用", key:"often"},
+    {value:"有，但很少使用", key:"seldom"},
+    {value:"沒有使用過", key:"never"},
+  ]
+}
+
+export const qaYorN =
+{
+  questionId:'2024100809',
+  question: "您是否曾經遇到過極端天氣而改變您的旅行或工作計畫？",
+  options: [
+    {value:"是", key:"yes"},
+    {value:"否", key:"no"},
+  ]
+}
+
+export const qaDescribe =
+{
+  questionId:'2024100810',
+  question: "請您描述一次您經歷的極端天氣事件，以及該事件對您的影響。",
+  options: [],
+}
+
+
+export const qaContact =
+{
+  questionId:'2024100811',
+  question: "請您描述一次您經歷的極端天氣事件，以及該事件對您的影響。",
+  options: [],
+}

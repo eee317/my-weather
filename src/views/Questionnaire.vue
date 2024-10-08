@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch } from "vue";
-import {qaGrnder, qaAge, qaCity, qaGetInf} from '../utils/question';
+import {qaGrnder, qaAge, qaCity, qaGetInf, qaCheckTimes, qaImportant, qaReason, qaUseService, qaYorN } from '../utils/question';
 import QuestionRadio from '../components/FormComp/RadioButtonDef.vue';
 import CheckBox_Other from '../components/FormComp/Checkbox_Other.vue';
 
@@ -10,6 +10,18 @@ const selectedCategory = ref({
   City:null,
   GetInf:[],
   GetOther:null,
+  CheckTimes:null,
+  Important:null,
+  Reason:[],
+  ReasonOther:null,
+  UseService:null,
+  YorN:null,
+  Describe:null,
+  Contact:{
+    name:'',
+    email:'',
+    telephone:'',
+  }
 });
 
 const barValue = ref([
@@ -63,6 +75,7 @@ const barValue = ref([
       v-model:otherModel="selectedCategory.GetOther"
       :categories="qaGetInf.options"
       :question="qaGetInf.question"
+      :questionId="qaGetInf.questionId"
       :otherQuestion="qaGetInf.otherQuestion"
     >
     </CheckBox_Other>
@@ -71,6 +84,40 @@ const barValue = ref([
       <p class="mb-2 mt-0">{{ qaCity.question }}</p>
       <Dropdown v-model="selectedCategory.City" :options="qaCity.options" optionLabel="value" optionValue="value" :placeholder="qaCity.question" class="w-full md:w-14rem" :pt="{list:{class:'p-0'}, wrapper:{class:'border border-solid max-h-[200px] overflow-auto rounded-md border-surface-300 mt-2'}}" />
     </div>
+
+    <QuestionRadio
+      v-model:selectedCategory="selectedCategory.CheckTimes"
+      :categories="qaCheckTimes.options" 
+      :question="qaCheckTimes.question" 
+    ></QuestionRadio>
+
+    <QuestionRadio
+      v-model:selectedCategory="selectedCategory.Important"
+      :categories="qaImportant.options" 
+      :question="qaImportant.question" 
+    ></QuestionRadio>
+
+    <CheckBox_Other
+      v-model:selectedCategory="selectedCategory.Reason"
+      v-model:otherModel="selectedCategory.ReasonOther"
+      :categories="qaReason.options"
+      :question="qaReason.question"
+      :questionId="qaReason.questionId"
+      :otherQuestion="qaReason.otherQuestion"
+    >
+    </CheckBox_Other>
+
+    <QuestionRadio
+      v-model:selectedCategory="selectedCategory.UseService"
+      :categories="qaUseService.options" 
+      :question="qaUseService.question" 
+    ></QuestionRadio>
+    
+    <QuestionRadio
+      v-model:selectedCategory="selectedCategory.YorN"
+      :categories="qaYorN.options" 
+      :question="qaYorN.question" 
+    ></QuestionRadio>
 
     {{selectedCategory}}
 

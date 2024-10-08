@@ -21,6 +21,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  questionId: {
+    type: String,
+    required: true,
+  },
 
 });
 
@@ -65,27 +69,28 @@ watch(
     <p class="mb-2 mt-0">{{ question }}</p>
     <div
       v-for="category in categories"
-      :key="category.key"
+      :key="category.key + questionId"
       class="py-1 flex items-center gap-1"
     >
       <Checkbox
         v-model="selectedCategory"
-        :inputId="category.key"
+        :inputId="category.key + questionId"
         name="category"
         :value="category.key"
       />
       <label
         :class="{ 'text-primary-400': selectedCategory.includes(category.key) }"
-        :for="category.key"
+        :for="category.key + questionId"
         >{{ category.value }}</label
       >
       <div
         v-if="selectedCategory.includes('Other') && category.key === 'Other'"
       >
-        <FloatLabel>
-          <InputText :id="'other' + category.key" v-model="otherModel" />
-          <label :for="'other' + category.key">{{ otherQuestion }}</label>
-        </FloatLabel>
+      
+        <!-- <label :for="'other' + category.key">{{ otherQuestion }}</label> -->
+        <InputText :id="'other' + category.key" v-model="otherModel" :placeholder="otherQuestion" />
+        <!-- <FloatLabel>
+        </FloatLabel> -->
       </div>
     </div>
   </div>

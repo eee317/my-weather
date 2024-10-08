@@ -8,7 +8,8 @@ export default {
             'align-bottom',
 
             // Size
-            'size-[1.625rem]',
+            //'size-[1.625rem]',
+            'size-5',
 
             // Misc
             'cursor-pointer',
@@ -30,7 +31,7 @@ export default {
 
             // Shape
             'rounded-md',
-            'border-2',
+            'border-2 border-solid',
 
             // Transitions
             'transition duration-200 ease-in-out',
@@ -95,7 +96,8 @@ export default {
             'text-base leading-none',
 
             // Size
-            'size-4',
+            //'size-4',
+            'size-3 font-black',
 
             // Colors
             {

@@ -31,5 +31,6 @@ export default {
             'appearance-none',
             fg.transition,
         ]
-    })
+    }),
+    
 };

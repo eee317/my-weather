@@ -7,6 +7,9 @@ export default {
             'inline-flex',
             'relative',
 
+            //my add
+            'border border-solid',
+
             // Shape
             fg.shape.normal,
 

@@ -1,4 +1,7 @@
 export default {
+  root:{
+    class:['border border-zinc-700 border-solid rounded-lg']
+  },
   header: ({ props }) => ({
     class: [
       // Flex
@@ -6,7 +9,7 @@ export default {
 
       // Colors
       'text-surface-700 dark:text-surface-0/80',
-      'bg-surface-50 dark:bg-surface-900',
+      //'bg-surface-50 dark:bg-surface-900',
       'border border-surface-200 dark:border-surface-700',
 
       //Shape
@@ -55,7 +58,7 @@ export default {
   content: {
     class: [
       // Spacing
-      'p-5',
+      'pb-5 px-5',
 
       // Shape
       'border border-t-0 last:rounded-br-lg last:rounded-bl-lg',

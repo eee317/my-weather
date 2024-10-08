@@ -47,7 +47,7 @@ export default {
   labellist: ({ props }) => ({
     class: [
       // Display & Flexbox
-      'flex flex-wrap',
+      'flex flex-wrap self-end',
 
       { 'gap-4': props.labelOrientation === 'horizontal' },
 

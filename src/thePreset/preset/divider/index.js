@@ -2,7 +2,7 @@ export default {
   root: ({ props }) => ({
     class: [
       // Flex and Position
-      'flex relative',
+      'flex relative ',
       { 'justify-center': props.layout == 'vertical' },
       { 'items-center': props.layout == 'vertical' },
       {
@@ -27,10 +27,11 @@ export default {
       },
 
       // Before: Line
-      'before:block',
+      'before:block before:border relative',
 
       // Position
       {
+       
         'before:absolute before:left-0 before:top-1/2': props.layout == 'horizontal',
         'before:absolute before:left-1/2 before:top-0 before:transform before:-translate-x-1/2': props.layout == 'vertical',
       },

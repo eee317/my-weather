@@ -25,6 +25,13 @@ import Dialog from 'primevue/dialog';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
 import Image from 'primevue/image';
+import Panel from 'primevue/panel';
+import MeterGroup from 'primevue/metergroup';
+import RadioButton from 'primevue/radiobutton';
+import Checkbox from 'primevue/checkbox';
+import Dropdown from 'primevue/dropdown';
+import FloatLabel from 'primevue/floatlabel';
+
 
 
 import App from './App.vue'
@@ -57,5 +64,11 @@ app.component('Dialog', Dialog);
 app.component('Splitter', Splitter);
 app.component('SplitterPanel', SplitterPanel);
 app.component('Image', Image);
+app.component('Panel', Panel);
+app.component('MeterGroup', MeterGroup);
+app.component('RadioButton', RadioButton);
+app.component('Checkbox', Checkbox);
+app.component('Dropdown', Dropdown);
+app.component('FloatLabel', FloatLabel);
 
 app.mount('#app');

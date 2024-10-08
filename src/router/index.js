@@ -11,15 +11,20 @@ const routes = [
                 component: () => import('@/views/Index.vue'),
             },
             {
-                path:'/WeatherTable',
+                path:'/weatherTable',
                 name: 'WeatherTable',
                 component: () => import('@/views/WeatherTable.vue'),
             },
             {
-                path:'/Earthquake/:EarthquakeNo',
+                path:'/earthquake/:EarthquakeNo',
                 name: 'Earthquake',
                 component: () => import('@/views/EarthquakePage.vue'),
-            }
+            },
+            {
+                path:'/questionnaire',
+                name: 'Questionnaire',
+                component: () => import('@/views/Questionnaire.vue'),
+            },
         ],
     }
 ];

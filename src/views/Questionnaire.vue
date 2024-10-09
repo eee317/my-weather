@@ -1,8 +1,11 @@
 <script setup>
 import { ref, watch } from "vue";
-import {qaGrnder, qaAge, qaCity, qaGetInf, qaCheckTimes, qaImportant, qaReason, qaUseService, qaYorN } from '../utils/question';
+import {qaGrnder, qaAge, qaCity, qaGetInf, qaCheckTimes, qaImportant, qaReason, qaUseService, qaYorN, qaDescribe, qaContact } from '../utils/question';
+import {validatName} from '../utils/validateUtils';
 import QuestionRadio from '../components/FormComp/RadioButtonDef.vue';
 import CheckBox_Other from '../components/FormComp/Checkbox_Other.vue';
+import TextareaDef from '../components/FormComp/TextareaDef.vue';
+import UserForm from "../components/FormComp/UserForm.vue";
 
 const selectedCategory = ref({
   Gender:null,
@@ -17,12 +20,24 @@ const selectedCategory = ref({
   UseService:null,
   YorN:null,
   Describe:null,
-  Contact:{
-    name:'',
-    email:'',
-    telephone:'',
-  }
 });
+
+const contact = ref({
+  name:'',
+  email:'',
+  telephone:'',
+  required: false,
+  onSend :false,
+})
+
+const doSent = () => {
+  console.log(contact.value)
+  if(contact.value.required === false){
+    console.log('恭喜完成')
+  }else{
+    contact.value.onSend = true;
+  }
+}
 
 const barValue = ref([
   { label: "已完成", value: 15, icon: "pi pi-check", color: "#34d399" },
@@ -58,7 +73,7 @@ const barValue = ref([
         class="text-center border-b-0 border-t-[1px] border-inherit border-solid absolute left-0 right-0 z-0"
       ></div>
     </div>
-
+  
     <QuestionRadio
       v-model:selectedCategory="selectedCategory.Gender"
       :categories="qaGrnder.options" 
@@ -118,8 +133,22 @@ const barValue = ref([
       :categories="qaYorN.options" 
       :question="qaYorN.question" 
     ></QuestionRadio>
+    <TextareaDef
+      v-model:model="selectedCategory.Describe"
+      :question="qaDescribe.question"
+      :placeholder="qaDescribe.placeholder"
+    ></TextareaDef>
+  <form @submit.prevent="doSent">
+    <UserForm
+      v-model:model="contact"
+      :question="qaContact.question"
+    
+    ></UserForm>
+    <Button type="submit" label="123"></Button>
+  </form>
 
     {{selectedCategory}}
+    {{ contact }}
 
     <div class="relative flex justify-center items-center my-4">
       <p class="text-center bg-white absolute z-10 px-2 font-black">問卷結束</p>

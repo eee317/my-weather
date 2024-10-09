@@ -136,6 +136,7 @@ export const qaDescribe =
 {
   questionId:'2024100810',
   question: "請您描述一次您經歷的極端天氣事件，以及該事件對您的影響。",
+  placeholder:"請輸入",
   options: [],
 }
 
@@ -143,6 +144,11 @@ export const qaDescribe =
 export const qaContact =
 {
   questionId:'2024100811',
-  question: "請您描述一次您經歷的極端天氣事件，以及該事件對您的影響。",
+  question: " 如果願意的話，請留下您的聯絡資訊，讓我們聯繫您做訪談。將會有神秘小禮物做為回饋。",
   options: [],
+  input:[
+    {question:'姓名',key:'name'},
+    {question:'信箱',key:'email'},
+    {question:'手機',key:'phone'},
+  ]
 }

@@ -31,11 +31,13 @@ import RadioButton from 'primevue/radiobutton';
 import Checkbox from 'primevue/checkbox';
 import Dropdown from 'primevue/dropdown';
 import FloatLabel from 'primevue/floatlabel';
+import Textarea from 'primevue/textarea';
+import InputGroup from 'primevue/inputgroup';
+import InputGroupAddon from 'primevue/inputgroupaddon';
 
 
-
-import App from './App.vue'
-import './styles/style.scss'
+import App from './App.vue';
+import './styles/style.scss';
 
 const pinia = createPinia();
 pinia.use(piniaPersist);
@@ -70,5 +72,8 @@ app.component('RadioButton', RadioButton);
 app.component('Checkbox', Checkbox);
 app.component('Dropdown', Dropdown);
 app.component('FloatLabel', FloatLabel);
+app.component('Textarea', Textarea);
+app.component('InputGroup', InputGroup);
+app.component('InputGroupAddon', InputGroupAddon);
 
 app.mount('#app');

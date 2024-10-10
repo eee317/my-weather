@@ -27,7 +27,7 @@ const contact = ref({
   email:'',
   telephone:'',
   required: false,
-  onSend :false,
+  onSend :[],
 })
 
 const doSent = () => {
@@ -35,7 +35,7 @@ const doSent = () => {
   if(contact.value.required === false){
     console.log('恭喜完成')
   }else{
-    contact.value.onSend = true;
+    contact.value.onSend= [1]; //使用 = 直接賦值，讓 watch 監聽
   }
 }
 

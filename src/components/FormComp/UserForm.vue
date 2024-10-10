@@ -81,7 +81,7 @@ watch(()=> model.value.onSend, (newValue) => {
   console.log('newValue222', newValue)
   if(newValue){
     console.log(1111111)
-    model.value.onSend = false;
+    model.value.onSend.length = 0; //使用陣列方法，讓 watch 監聽不到
   }
   console.log(' model.value.onSend', model.value.onSend)
 })

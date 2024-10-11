@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineProps, defineModel, watch, defineEmits, onMounted,computed } from 'vue';
+import { ref, defineProps, defineModel, watch, defineEmits } from 'vue';
 import {validatName, validatEmail, validatTelephone} from '@/utils/validateUtils';
 const props = defineProps({
   question: {
@@ -7,7 +7,7 @@ const props = defineProps({
     required: true,
   },
 });
-
+const emit = defineEmits(['onSent']);
 const model = defineModel('model');
 
 const userFormData = ref([
@@ -56,6 +56,7 @@ const checkInvalid = (idx) => {
   userIdx.invalidText = userIdx.customCheck(model.value[userIdx.key], userIdx.required);
   if(userIdx.invalidText){
     userIdx.invalid = true;
+    model.value.isSuccessful = false;
   }else{
     userIdx.invalid = false;
   }
@@ -63,33 +64,51 @@ const checkInvalid = (idx) => {
 
 const doRequired = () => {
   console.log('model.value.required', model.value.required)
+  model.value.isSuccessful = false;
   if(model.value.required === false){
     userFormData.value.forEach((item, idx) => {
       item.required = true;
-      //checkInvalid(idx);
     })
+    
   }else{
     userFormData.value.forEach((item, idx) => {
       item.required = false;
-      //checkInvalid(idx);
     })
+    model.value.isSuccessful = true;
   }
 }
 
-
+/**
+ * 送出按鈕，確認是否所有表單可寄出
+ * @description 如果可以寄出，isSuccessful 為 true，只要有一個欄位驗證不過，isSuccessful 為 false
+ */
 watch(()=> model.value.onSend, (newValue) => {
   console.log('newValue222', newValue)
-  if(newValue){
-    console.log(1111111)
+  console.log('model.value.required',model.value.required)
+  if(model.value.onSend.length>0){
+
+    let invalidNum = 0
+    userFormData.value.forEach((item, idx) => {
+      checkInvalid(idx);
+      if(item.invalid){
+        invalidNum += 1
+      }
+    })
+    console.log('invalidNum', invalidNum)
+    if(invalidNum>0){
+      console.log('不能送出')
+    }else{
+      model.value.isSuccessful = true;
+      console.log('需重新觸發一次 doSent()')
+     
+      emit('onSent');
+    }
+    
     model.value.onSend.length = 0; //使用陣列方法，讓 watch 監聽不到
+    
   }
   console.log(' model.value.onSend', model.value.onSend)
 })
-const doSend = () => {
-  console.log('子層: dooo');
-
-  // 子層執行其他必要邏輯
-}
 
 
 </script>

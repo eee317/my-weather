@@ -35,7 +35,7 @@ export const validatEmail = (email="", required=false) => {
   const theRequired = required;
   
   if (trimmedEmail === "" && theRequired ) {
-    return "請填寫姓名";
+    return "請填寫信箱";
   }else if(trimmedEmail === "" && theRequired === false){
     return;
   }
@@ -52,7 +52,7 @@ export const validatTelephone = (phone='', required=false) => {
   const trimmedPhone = phone.trim();
   const theRequired = required;
   if (trimmedPhone === "" && theRequired ) {
-    return "請填寫姓名";
+    return "請填寫手機";
   }else if(trimmedPhone === "" && theRequired === false){
     return;
   }

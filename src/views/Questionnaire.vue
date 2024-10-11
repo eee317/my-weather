@@ -22,21 +22,33 @@ const selectedCategory = ref({
   Describe:null,
 });
 
+
+/**
+ * 用戶資料欄位
+ * @description 如果可以寄出，isSuccessful 為 true，只要有一個欄位驗證不過，isSuccessful 為 false，利用 onSend 去觸發子層的 watch ，欄位 required:是否為必填
+ */
 const contact = ref({
   name:'',
   email:'',
   telephone:'',
   required: false,
   onSend :[],
+  isSuccessful: true,
 })
 
 const doSent = () => {
-  console.log(contact.value)
+  console.log('觸發doSent',contact.value)
+  if(contact.value.isSuccessful){
+    console.log('恭喜完成');
+    return;
+  }
   if(contact.value.required === false){
-    console.log('恭喜完成')
-  }else{
+    contact.value.isSuccessful = true;
+  }else if (contact.value.required === true){
+    contact.value.isSuccessful = false;
     contact.value.onSend= [1]; //使用 = 直接賦值，讓 watch 監聽
   }
+  
 }
 
 const barValue = ref([
@@ -142,9 +154,9 @@ const barValue = ref([
     <UserForm
       v-model:model="contact"
       :question="qaContact.question"
-    
+      @onSent="doSent"
     ></UserForm>
-    <Button type="submit" label="123"></Button>
+    <Button type="submit" label="送出問券"></Button>
   </form>
 
     {{selectedCategory}}

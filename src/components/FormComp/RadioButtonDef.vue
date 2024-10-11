@@ -1,5 +1,6 @@
 <script setup>
   import { ref, watch, defineEmits, defineProps, defineModel } from 'vue';
+  const emits = defineEmits(["update:invalid"]);
   const props = defineProps({
   categories: {
     type: Array,
@@ -9,10 +10,28 @@
     type: String,
     required: true
   },
-  
+  invalid:{
+    type:Boolean,
+    required: true
+  },
+  questionId:{
+    type: String,
+    required: true
+  },
+  invalidText:{
+    type: String,
+    default: '',
+  }
+
 });
 
-const selectedCategory = defineModel('selectedCategory')
+const selectedCategory = defineModel('selectedCategory');
+watch(()=> selectedCategory.value, (newValue) =>{
+  if(selectedCategory.value !== ''){
+    //props.invalid.value = false;
+    emits("update:invalid", false)
+  }
+})
 
 //const emit = defineEmits(['update:selected']);
 
@@ -20,10 +39,11 @@ const selectedCategory = defineModel('selectedCategory')
 </script>
 <template>
   <div>
-    <p>{{ question }}</p>
-    <div v-for="category in categories" :key="category.key" class="flex items-center">
-        <RadioButton v-model="selectedCategory" :inputId="category.key" name="dynamic" :value="category.value" :invalid="selectedCategory === null" />
-        <label :for="category.key" class="ml-2" :class="{ 'text-primary-400': selectedCategory === category.value }">{{ category.value }}</label>
+    <p class="mt-2 mb-1">{{ question }}</p>
+    <p v-if="invalidText" class="text-red-400 mt-0 mb-2">{{ invalidText }}</p>
+    <div v-for="category in categories" :key="category.key + questionId" class="flex items-center">
+        <RadioButton v-model="selectedCategory" :inputId="category.key + questionId" name="dynamic" :value="category.value" :invalid="invalid" />
+        <label :for="category.key + questionId" class="ml-2" :class="{ 'text-primary-400': selectedCategory === category.value }">{{ category.value }}</label>
       </div>
   </div>
 </template>

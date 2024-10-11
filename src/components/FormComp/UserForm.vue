@@ -1,6 +1,7 @@
 <script setup>
 import { ref, defineProps, defineModel, watch, defineEmits } from 'vue';
-import {validatName, validatEmail, validatTelephone} from '@/utils/validateUtils';
+import { validatName, validatEmail, validatTelephone} from '@/utils/validateUtils';
+import { qaContact } from '@/utils/question';
 const props = defineProps({
   question: {
     type: String,
@@ -63,7 +64,6 @@ const checkInvalid = (idx) => {
 }
 
 const doRequired = () => {
-  console.log('model.value.required', model.value.required)
   model.value.isSuccessful = false;
   if(model.value.required === false){
     userFormData.value.forEach((item, idx) => {
@@ -83,8 +83,7 @@ const doRequired = () => {
  * @description 如果可以寄出，isSuccessful 為 true，只要有一個欄位驗證不過，isSuccessful 為 false
  */
 watch(()=> model.value.onSend, (newValue) => {
-  console.log('newValue222', newValue)
-  console.log('model.value.required',model.value.required)
+
   if(model.value.onSend.length>0){
 
     let invalidNum = 0
@@ -100,14 +99,13 @@ watch(()=> model.value.onSend, (newValue) => {
     }else{
       model.value.isSuccessful = true;
       console.log('需重新觸發一次 doSent()')
-     
       emit('onSent');
     }
     
     model.value.onSend.length = 0; //使用陣列方法，讓 watch 監聽不到
     
   }
-  console.log(' model.value.onSend', model.value.onSend)
+  
 })
 
 
@@ -115,7 +113,7 @@ watch(()=> model.value.onSend, (newValue) => {
 <template>
   <div>
     <div class="my-6">
-      <p>{{ question }}</p> 
+      <p>{{ qaContact.question }}</p> 
       <div class="mb-4">
         <Checkbox v-model="model.required" @click="doRequired" binary inputId="wishes" name="userForm" />
         <label for="wishes" class="ml-2"> 我有意願留下聯絡資料 </label>

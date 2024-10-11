@@ -1,27 +1,49 @@
 <script setup>
-import { ref, watch } from "vue";
+import { useRouter } from 'vue-router';
+import { ref, watch,computed } from "vue";
 import {qaGrnder, qaAge, qaCity, qaGetInf, qaCheckTimes, qaImportant, qaReason, qaUseService, qaYorN, qaDescribe, qaContact } from '../utils/question';
-import {validatName} from '../utils/validateUtils';
-import QuestionRadio from '../components/FormComp/RadioButtonDef.vue';
-import CheckBox_Other from '../components/FormComp/Checkbox_Other.vue';
-import TextareaDef from '../components/FormComp/TextareaDef.vue';
+
+import QuestionForm from "../components/FormComp/QuestionForm.vue";
 import UserForm from "../components/FormComp/UserForm.vue";
 
+/**
+ * 問券題目欄位
+ * @description 如果可以寄出，totalScore 需為 100
+ */
 const selectedCategory = ref({
-  Gender:null,
-  Age:null,
-  City:null,
+  Gender:'',
+  Age:'',
+  City:'',
   GetInf:[],
-  GetOther:null,
-  CheckTimes:null,
-  Important:null,
+  GetOther:'',
+  CheckTimes:'',
+  Important:'',
   Reason:[],
-  ReasonOther:null,
-  UseService:null,
-  YorN:null,
-  Describe:null,
+  ReasonOther:'',
+  UseService:'',
+  YorN:'',
+  Describe:'',
+  onSend :[],
 });
-
+const totalScore = computed(() => {
+  let score = 0;
+  for (const key in selectedCategory.value) {
+    //排除不要計算的值
+    if ( key !== 'onSend' &&  key !== 'GetOther' &&  key !== 'ReasonOther') {
+      const value = selectedCategory.value[key];
+      if (typeof value === 'string' && value.trim() !== '') {
+        score += 1;
+      }
+      if (Array.isArray(value) && value.length > 0) {
+        score += 1;
+      }
+    }
+  }
+  return score * 10;
+});
+const barValue = ref([
+  { label: "已完成", value: totalScore, icon: "pi pi-check", color: "#34d399" },
+]);
 
 /**
  * 用戶資料欄位
@@ -36,11 +58,15 @@ const contact = ref({
   isSuccessful: true,
 })
 
+const router = useRouter();
 const doSent = () => {
-  console.log('觸發doSent',contact.value)
-  if(contact.value.isSuccessful){
+  if(contact.value.isSuccessful && totalScore.value === 100){
     console.log('恭喜完成');
+    router.push({name:'Thanks'});
     return;
+  }
+  if(totalScore.value < 100){
+    selectedCategory.value.onSend = [1];
   }
   if(contact.value.required === false){
     contact.value.isSuccessful = true;
@@ -48,12 +74,8 @@ const doSent = () => {
     contact.value.isSuccessful = false;
     contact.value.onSend= [1]; //使用 = 直接賦值，讓 watch 監聽
   }
-  
 }
 
-const barValue = ref([
-  { label: "已完成", value: 15, icon: "pi pi-check", color: "#34d399" },
-]);
 
 
 </script>
@@ -77,7 +99,7 @@ const barValue = ref([
       </p>
     </Panel>
 
-    <MeterGroup :value="barValue" class="my-6" />
+    <MeterGroup :value="barValue" class="py-5 mb-6 sticky top-[81px] z-50 bg-white" />
 
     <div class="relative flex justify-center items-center">
       <p class="text-center bg-white absolute z-10 px-2 font-black">問卷開始</p>
@@ -85,83 +107,21 @@ const barValue = ref([
         class="text-center border-b-0 border-t-[1px] border-inherit border-solid absolute left-0 right-0 z-0"
       ></div>
     </div>
-  
-    <QuestionRadio
-      v-model:selectedCategory="selectedCategory.Gender"
-      :categories="qaGrnder.options" 
-      :question="qaGrnder.question" 
-    ></QuestionRadio>
-    <QuestionRadio
-      v-model:selectedCategory="selectedCategory.Age"
-      :categories="qaAge.options" 
-      :question="qaAge.question" 
-    ></QuestionRadio>
 
-    <CheckBox_Other
-      v-model:selectedCategory="selectedCategory.GetInf"
-      v-model:otherModel="selectedCategory.GetOther"
-      :categories="qaGetInf.options"
-      :question="qaGetInf.question"
-      :questionId="qaGetInf.questionId"
-      :otherQuestion="qaGetInf.otherQuestion"
-    >
-    </CheckBox_Other>
-
-    <div class="my-3">
-      <p class="mb-2 mt-0">{{ qaCity.question }}</p>
-      <Dropdown v-model="selectedCategory.City" :options="qaCity.options" optionLabel="value" optionValue="value" :placeholder="qaCity.question" class="w-full md:w-14rem" :pt="{list:{class:'p-0'}, wrapper:{class:'border border-solid max-h-[200px] overflow-auto rounded-md border-surface-300 mt-2'}}" />
-    </div>
-
-    <QuestionRadio
-      v-model:selectedCategory="selectedCategory.CheckTimes"
-      :categories="qaCheckTimes.options" 
-      :question="qaCheckTimes.question" 
-    ></QuestionRadio>
-
-    <QuestionRadio
-      v-model:selectedCategory="selectedCategory.Important"
-      :categories="qaImportant.options" 
-      :question="qaImportant.question" 
-    ></QuestionRadio>
-
-    <CheckBox_Other
-      v-model:selectedCategory="selectedCategory.Reason"
-      v-model:otherModel="selectedCategory.ReasonOther"
-      :categories="qaReason.options"
-      :question="qaReason.question"
-      :questionId="qaReason.questionId"
-      :otherQuestion="qaReason.otherQuestion"
-    >
-    </CheckBox_Other>
-
-    <QuestionRadio
-      v-model:selectedCategory="selectedCategory.UseService"
-      :categories="qaUseService.options" 
-      :question="qaUseService.question" 
-    ></QuestionRadio>
     
-    <QuestionRadio
-      v-model:selectedCategory="selectedCategory.YorN"
-      :categories="qaYorN.options" 
-      :question="qaYorN.question" 
-    ></QuestionRadio>
-    <TextareaDef
-      v-model:model="selectedCategory.Describe"
-      :question="qaDescribe.question"
-      :placeholder="qaDescribe.placeholder"
-    ></TextareaDef>
-  <form @submit.prevent="doSent">
-    <UserForm
-      v-model:model="contact"
-      :question="qaContact.question"
-      @onSent="doSent"
-    ></UserForm>
-    <Button type="submit" label="送出問券"></Button>
-  </form>
-
-    {{selectedCategory}}
-    {{ contact }}
-
+  
+    <form @submit.prevent="doSent">
+      <QuestionForm
+        v-model:model="selectedCategory"
+        @onSent="doSent"
+      ></QuestionForm>
+      <UserForm
+        v-model:model="contact"
+        :question="qaContact.question"
+        @onSent="doSent"
+      ></UserForm>
+      <Button type="submit" label="送出問券"></Button>
+    </form>
     <div class="relative flex justify-center items-center my-4">
       <p class="text-center bg-white absolute z-10 px-2 font-black">問卷結束</p>
       <div

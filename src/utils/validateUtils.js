@@ -64,6 +64,21 @@ export const validatTelephone = (phone='', required=false) => {
   if(!phoneRegex.test(trimmedPhone)){
     return "手機格式不正確，請輸入10碼"
   }
+  return;
+}
 
+export const radioBtnDef = (value='') => {
+  const trimValue = value.trim();
+  if(trimValue === ""){
+    return "必填"
+  }
+  return;
+}
+
+export const checkboxOther = (value=[]) => {
+  const theValue = value;
+  if(theValue.length === 0){
+    return "必填"
+  }
   return;
 }

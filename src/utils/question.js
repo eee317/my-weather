@@ -29,6 +29,7 @@ export const qaCity =
 {
   questionId:'2024100803',
   question: "您居住的城市",
+  placeholder: "請選擇",
   options: [
     { value: "台北市", key: "TPE" },
     { value: "新北市", key: "TPH" },
@@ -146,9 +147,9 @@ export const qaContact =
   questionId:'2024100811',
   question: " 如果願意的話，請留下您的聯絡資訊，讓我們聯繫您做訪談。將會有神秘小禮物做為回饋。",
   options: [],
-  input:[
-    {question:'姓名',key:'name'},
-    {question:'信箱',key:'email'},
-    {question:'手機',key:'phone'},
-  ]
+  // input:[
+  //   {question:'姓名',key:'name'},
+  //   {question:'信箱',key:'email'},
+  //   {question:'手機',key:'phone'},
+  // ]
 }

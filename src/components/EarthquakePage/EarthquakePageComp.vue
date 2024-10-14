@@ -14,40 +14,49 @@
   const leftSide= ref(15);
   const rightSide= ref(85);
 
-  // 切換 leftSide 的值
+  //側欄縮合
+  const isSide = ref(false);
   const togglePanel = () => {
-    leftSide.value = leftSide.value === 0 ? 15 : 0;
-    rightSide.value = rightSide.value === 100 ? 85 : 100;
+    isSide.value = !isSide.value;
+    rightSide.value = isSide.value ? 100 : 85;
+    leftSide.value = isSide.value ? 0 : 15;
   };
 
 
-// 子層 emit 回來的值
+/**
+ * Component 彼此傳值
+ * @param {Object} newValue 選擇的其中一筆地震報告
+ * @description 左側欄點選的項目，會傳到這裡的 selectedDataMain，再傳給右側
+ */
+// 左側子層 emit 回來的值
   const updateEarthquakeNo = (newValue) => {
-    selectedDataMain.value = newValue
-    console.log('selectedDataMain.value_COMP222', newValue)
+    selectedDataMain.value = newValue;
   }
 
+/**
+ * 帶入Data
+ * @description 利用抓到的網址 params 去抓出地震要顯示的主要內容
+ */
 onMounted(()=>{
   const { EarthquakeNo } = route.params;
   theEarthquakeNo.value = EarthquakeNo;
-  console.log('comp_selectedData.value',selectedDataMain.value )
-  console.log('comp', EarthquakeNo)
 })
+
 
   
 </script>
 <template>
   <div class="card">
-      <Splitter>
-          <SplitterPanel class="p-4 flex align-items-center justify-content-center" 
-          :size="leftSide" :minSize="10" > 
+      <Splitter unstyled>
+          <SplitterPanel  
+          :class="{'hidden': isSide}" class="p-4 flex align-items-center justify-content-center" 
+          :size="leftSide"> 
             <EarthquakeList :data="useDataStore.earthquakeData" :params="theEarthquakeNo" @updateValue="updateEarthquakeNo"></EarthquakeList>
           </SplitterPanel>
 
-          <SplitterPanel class="p-4" :size="rightSide" >
-          
-            <!-- <Button type="button" @click="togglePanel">縮合 {{ rightSide }}</Button> -->
-            
+          <SplitterPanel :pt="{ root: { style: { 'flex-basis': isSide ? 'calc(100% - 4px)' : 'calc(85% - 4px)' } } }"
+          class="p-4" :size="rightSide" >
+            <Button type="button" @click="togglePanel">縮合</Button>
             <EarthquakContent :selectedDataMain="selectedDataMain"></EarthquakContent>
           </SplitterPanel>
       </Splitter>

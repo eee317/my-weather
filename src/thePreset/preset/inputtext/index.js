@@ -6,6 +6,8 @@ export default {
             'leading-none',
             fg.spacing(props.size),
 
+            'border-solid',
+
             // InputGroup
             parent.instance.$name == 'InputGroup' ? [
                 'flex-1 w-[1%]',
@@ -31,5 +33,6 @@ export default {
             'appearance-none',
             fg.transition,
         ]
-    })
+    }),
+    
 };

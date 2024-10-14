@@ -8,7 +8,8 @@ export default {
             'align-bottom',
 
             // Size
-            'size-[1.625rem]',
+            //'size-[1.625rem]',
+            'size-4',
 
             // Misc
             'cursor-pointer',
@@ -27,7 +28,7 @@ export default {
             'size-full',
 
             // Shape
-            'border-2',
+            'border-2 border-solid',
             'rounded-full',
 
             // Transition
@@ -100,7 +101,8 @@ export default {
             'rounded-full',
 
             // Size
-            'size-[0.875rem]',
+            //'size-[0.875rem]',
+            'size-2',
 
             // Colors
             {

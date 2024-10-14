@@ -7,13 +7,6 @@ import { useApiDataStore } from '@/stores/apiDataStores';
 const useDataStore = useApiDataStore();
 const citys = ref([]);
 const city = ref([]);
-const cityFormat = ref([]);
-
-const cityDoFormat = (city) => {
-    cityFormat.value = city.map((item)=>{
-        
-    })
-}
 
 const getAllWeather = async () => {
   await WeatherAPI.getAll()
@@ -31,13 +24,27 @@ const getAllWeather = async () => {
 const getCityWeather = async (cityName) => {
   await WeatherAPI.getCity(cityName)
   .then((res) => {
+    console.log("res", res);
+    const cityFormat = res.locations[0].location.map((item) => {
+        const AT = item.weatherElement.filter(at => at.elementName ==="PoP12h");
+        const Wx = item.weatherElement.filter(wx => wx.elementName ==="Wx");
+        const CI = item.weatherElement.filter(ci => ci.elementName ==="CI" || ci.elementName ==="MinCI");
+        const T = item.weatherElement.filter(t => t.elementName ==="T");
+        return {
+            "locationName": item.locationName,
+            "降雨機率": AT[0].time[0].elementValue[0].value + "%",
+            "天氣現象": Wx[0].time[0].elementValue[0].value,
+            "舒適度": CI[0].time[0].elementValue[1].value,
+            "溫度": T[0].time[0].elementValue[0].value + "°C",
+        }
+    })
     const cityObj = {
       locationName: cityName,
-      location: res.locations[0].location,
+      location: cityFormat,
     };
     city.value.push(cityObj);
     console.log("push", city.value);
-    console.log("res", res);
+   
   });
 };
 
@@ -131,29 +138,21 @@ watch(isDialog, newValue => {
             <div class="flex justify-between align-items-center">
                 
                 <p class="mt-0 mb-1">{{ slotProps.data.weatherElement[0].time[0].parameter.parameterName }}</p>
-                <p  class="mt-0 ">{{ slotProps.data.weatherElement[2].time[0].parameter.parameterName }} ~ {{ slotProps.data.weatherElement[4].time[0].parameter.parameterName }}度</p>
+                <p  class="mt-0 ">{{ slotProps.data.weatherElement[2].time[0].parameter.parameterName }} ~ {{ slotProps.data.weatherElement[4].time[0].parameter.parameterName }} °C</p>
             </div>
         </div>
     </template>
 </Carousel>
 
-<Dialog v-model:visible="isDialog" modal :header="dialogData[0]?.locationName" :style="{ width: '1200px' }">
-    <DataTable :value="dialogData[0]?.location" dataKey="locationName">
-        <Column field="locationName" header="縣市名稱"></Column>
-        
+<Dialog v-model:visible="isDialog" modal :header="dialogData[0]?.locationName" class="w-[900px]">
+    <DataTable stripedRows scrollable scrollHeight="400px"
+    :value="dialogData[0]?.location" dataKey="locationName" >
+        <Column class="text-center" field="locationName" header="縣市名稱"></Column>
+        <Column class="text-center" field="天氣現象" header="天氣現象"></Column>
+        <Column class="text-center" field="舒適度" header="舒適度"></Column>
+        <Column class="text-center" field="降雨機率" header="降雨機率"></Column>
+        <Column class="text-center" field="溫度" header="溫度"></Column>
     </DataTable>
-    <!-- <div class="flex align-items-center gap-3 mb-3">
-        <label for="username" class="font-semibold w-6rem">Username</label>
-        <InputText id="username" class="flex-auto" autocomplete="off" />
-    </div>
-    <div class="flex align-items-center gap-3 mb-5">
-        <label for="email" class="font-semibold w-6rem">Email</label>
-        <InputText id="email" class="flex-auto" autocomplete="off" />
-    </div>
-    <div class="flex justify-content-end gap-2">
-        <Button type="button" label="Cancel" severity="secondary" @click="isDialog = false"></Button>
-        <Button type="button" label="Save" @click="isDialog = false"></Button>
-    </div> -->
 </Dialog>
 
 

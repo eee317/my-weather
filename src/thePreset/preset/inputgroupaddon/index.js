@@ -12,6 +12,7 @@ export default {
       'last:border-r',
       'border-l',
       'border-r-0',
+      'border-solid',
 
       // Space
       // 'p-3',

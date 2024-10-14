@@ -30,7 +30,8 @@ onMounted(() => {
 
 </script>
 <template>
-<DataTable :value="earthquakeData" v-model:selection="selectedProduct"  :rows="5" :rowsPerPageOptions="[5, 10, 20, 50]" tableStyle="min-width: 50rem">
+<DataTable :value="earthquakeData" v-model:selection="selectedProduct"  
+paginator :rows="10" :rowsPerPageOptions="[5, 10, 20, 50]" tableStyle="min-width: 50rem">
     <Column field="ReportContent" header="日期" style="width: 10%">
         <template #body="slotProps">
             <p class="text-center">{{ matchDate(slotProps.data.ReportContent || '') }}</p>

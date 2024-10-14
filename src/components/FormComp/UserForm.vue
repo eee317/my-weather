@@ -133,6 +133,5 @@ watch(()=> model.value.onSend, (newValue) => {
         </div>
       </div>
     </div>
-    {{ userFormData }}
   </div>
 </template>

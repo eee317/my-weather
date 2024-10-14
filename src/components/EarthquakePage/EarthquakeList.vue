@@ -23,9 +23,12 @@ const navigateTo = (EarthquakeNo) => {
   });
 };
 
+
+/**
+ * 監聽選擇的列表
+ * @description 如果選擇的項目有改變，就更新父層的值，並且更改網址
+ */
 watch(selectedData, (newValue) => {
-  console.log('newData', newValue)
-  console.log('newValue.EarthquakeNo', newValue.EarthquakeNo)
     if (newValue.EarthquakeNo != undefined) {
       emit('updateValue', selectedData.value);
       const earthquakeNo = newValue.EarthquakeNo;
@@ -42,8 +45,9 @@ onMounted( async ()=>{
 })
 </script>
 <template>
-    <DataTable :value="props.data" tableStyle=""
-   v-model:selection="selectedData" selectionMode="single" dataKey="EarthquakeNo">
+    <DataTable :pt="{column:{ headercell:{class:'bg-primary-100 text-primary-700 dark:bg-primary-dark-500 py-3'}}}" 
+      :value="props.data" tableStyle=""
+      v-model:selection="selectedData" selectionMode="single" dataKey="EarthquakeNo">
     <Column style="width: 3%">
       <template #body="slotProps">
         <div class="rounded-full mx-auto w-2 h-2" :class="resultColor(slotProps.data.ReportColor)"></div>

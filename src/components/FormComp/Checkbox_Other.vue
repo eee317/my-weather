@@ -21,6 +21,14 @@ const props = defineProps({
     type:Boolean,
     required: true,
   },
+  required:{
+    type:Boolean,
+    required: true
+  },
+  index:{
+    type: Number,
+    required:true
+  },
   otherQuestion: {
     type: String,
     required: true,
@@ -68,8 +76,8 @@ watch(
 </script>
 <template>
   <div>
-    <p class="mb-1 mt-0">{{ question }}</p>
-    <p v-if="invalidText" class="text-red-400 mt-0 mb-2">{{ invalidText }}</p>
+    <p class="mb-1 mt-0"><span class="pr-2 py-2">{{ index }}.</span>{{ question }}<span v-if="required" class="text-red-400">*</span></p>
+    <p v-if="invalidText && invalid" class="text-red-400 mt-0 mb-2">{{ invalidText }}</p>
     <div
       v-for="category in categories"
       :key="category.key + questionId"

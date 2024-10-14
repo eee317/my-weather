@@ -1,10 +1,12 @@
 <script setup>
 import { useRouter } from 'vue-router';
-import { ref, watch,computed } from "vue";
-import {qaGrnder, qaAge, qaCity, qaGetInf, qaCheckTimes, qaImportant, qaReason, qaUseService, qaYorN, qaDescribe, qaContact } from '../utils/question';
+import { ref, watch, computed, defineAsyncComponent } from "vue";
+import { qaContact } from '../utils/question';
 
 import QuestionForm from "../components/FormComp/QuestionForm.vue";
 import UserForm from "../components/FormComp/UserForm.vue";
+
+import { useDialog } from 'primevue/usedialog';
 
 /**
  * 問券題目欄位
@@ -58,11 +60,15 @@ const contact = ref({
   isSuccessful: true,
 })
 
-const router = useRouter();
+
+/**
+ * 送出表單按鈕
+ * @description 無論是否成功都會跳彈窗
+ */
 const doSent = () => {
   if(contact.value.isSuccessful && totalScore.value === 100){
     console.log('恭喜完成');
-    router.push({name:'Thanks'});
+    showDailog(true);
     return;
   }
   if(totalScore.value < 100){
@@ -74,6 +80,56 @@ const doSent = () => {
     contact.value.isSuccessful = false;
     contact.value.onSend= [1]; //使用 = 直接賦值，讓 watch 監聽
   }
+  showDailog(false);
+}
+
+const router = useRouter();
+const ResultDialog = defineAsyncComponent(() => import('@/components/FormComp/ResultDailogForm.vue'));
+const dialog = useDialog();
+
+/**
+ * 表單送出後的談窗
+ * @param {Boolean} state 傳遞表單是否能成功送出
+ * @description 無論是否成功都會跳彈窗:成功談窗會倒回首頁
+ */
+const showDailog = ( state = false ) => {
+  const title = state ? '感謝您完成問券 ! ' : '您尚未填寫完畢。';
+  const btnStr = state ? '回首頁' : '我知道了';
+
+  dialog.open(ResultDialog, {
+        props: {
+            //header: '您的表單尚未填寫完畢',
+            style: {
+                width: '50vw',
+            },
+            breakpoints:{
+                '960px': '75vw',
+                '640px': '90vw'
+            },
+            modal: true,
+        },
+        data: {
+            title,
+            btnStr,
+        },
+        // templates: {
+        //   footer: markRaw(FooterDemo)
+        // },
+        onClose: (options) => {
+          if(contact.value.isSuccessful && totalScore.value === 100){
+            router.push({name:'Index'});
+          }
+            // const data = options.data;
+            // console.log(options)
+            
+            // if (data) {
+            //   const buttonType = data.buttonType;
+            //   const summary_and_detail = buttonType ? { summary: 'No Product Selected', detail: `Pressed '${buttonType}' button` } : { summary: 'Product Selected', detail: data.name };
+            //   toast.add({ severity:'info', ...summary_and_detail, life: 3000 });
+            // }
+        }
+  })
+  
 }
 
 
@@ -128,6 +184,7 @@ const doSent = () => {
         class="text-center border-b-0 border-t-[1px] border-inherit border-solid absolute left-0 right-0 z-0"
       ></div>
     </div>
+    <DynamicDialog/>
   </main>
 </template>
 <style scoped>

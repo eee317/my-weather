@@ -34,6 +34,8 @@ import FloatLabel from 'primevue/floatlabel';
 import Textarea from 'primevue/textarea';
 import InputGroup from 'primevue/inputgroup';
 import InputGroupAddon from 'primevue/inputgroupaddon';
+import DynamicDialog from 'primevue/dynamicdialog';
+import DialogService from 'primevue/dialogservice';
 
 
 import App from './App.vue';
@@ -49,6 +51,7 @@ app.use(PrimeVue,{
   pt:Aura,
 });
 app.use(ToastService);
+app.use(DialogService);
 app.component('InputText', InputText);
 app.component('Button', Button);
 app.component('Toast', Toast);
@@ -75,5 +78,6 @@ app.component('FloatLabel', FloatLabel);
 app.component('Textarea', Textarea);
 app.component('InputGroup', InputGroup);
 app.component('InputGroupAddon', InputGroupAddon);
+app.component('DynamicDialog', DynamicDialog);
 
 app.mount('#app');

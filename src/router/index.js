@@ -25,11 +25,6 @@ const routes = [
                 name: 'Questionnaire',
                 component: () => import('@/views/Questionnaire.vue'),
             },
-            {
-                path:'/thanks',
-                name: 'Thanks',
-                component: () => import('@/views/Thanks.vue'),
-            },
         ],
     }
 ];

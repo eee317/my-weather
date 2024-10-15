@@ -40,3 +40,24 @@ export const resultColor = (str) => {
   return color[str] || 'bg-orange-400';
 }
 
+/**
+*整理氣象的鄉鎮的資料格式
+* @param {Object} cityRes 鄉鎮 API 回傳的資料
+* @description 把資料轉換成 Datatable 可以運作的值
+*/
+export const cityFormat = (cityRes) => {
+  const cityFormat = cityRes.locations[0].location.map((item) => {
+    const AT = item.weatherElement.filter(at => at.elementName ==="PoP12h");
+    const Wx = item.weatherElement.filter(wx => wx.elementName ==="Wx");
+    const CI = item.weatherElement.filter(ci => ci.elementName ==="CI" || ci.elementName ==="MinCI");
+    const T = item.weatherElement.filter(t => t.elementName ==="T");
+    return {
+        "locationName": item.locationName,
+        "降雨機率": AT[0].time[0].elementValue[0].value + "%",
+        "天氣現象": Wx[0].time[0].elementValue[0].value,
+        "舒適度": CI[0].time[0].elementValue[1].value,
+        "溫度": T[0].time[0].elementValue[0].value + "°C",
+    }
+  })
+  return cityFormat;
+}

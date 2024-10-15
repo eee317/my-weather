@@ -2,6 +2,7 @@
 import { ref, onMounted, watch,   } from "vue";
 import WeatherAPI from "@/api/weather";
 import { getCitysImg } from "@/utils/cityImgUtils";
+import { cityFormat } from '@/utils/utils';
 import { useApiDataStore } from '@/stores/apiDataStores';
 
 const useDataStore = useApiDataStore();
@@ -25,22 +26,9 @@ const getCityWeather = async (cityName) => {
   await WeatherAPI.getCity(cityName)
   .then((res) => {
     console.log("res", res);
-    const cityFormat = res.locations[0].location.map((item) => {
-        const AT = item.weatherElement.filter(at => at.elementName ==="PoP12h");
-        const Wx = item.weatherElement.filter(wx => wx.elementName ==="Wx");
-        const CI = item.weatherElement.filter(ci => ci.elementName ==="CI" || ci.elementName ==="MinCI");
-        const T = item.weatherElement.filter(t => t.elementName ==="T");
-        return {
-            "locationName": item.locationName,
-            "降雨機率": AT[0].time[0].elementValue[0].value + "%",
-            "天氣現象": Wx[0].time[0].elementValue[0].value,
-            "舒適度": CI[0].time[0].elementValue[1].value,
-            "溫度": T[0].time[0].elementValue[0].value + "°C",
-        }
-    })
     const cityObj = {
       locationName: cityName,
-      location: cityFormat,
+      location: cityFormat(res),
     };
     city.value.push(cityObj);
     console.log("push", city.value);

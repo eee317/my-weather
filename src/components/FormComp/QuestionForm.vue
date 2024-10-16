@@ -18,6 +18,7 @@ import TextareaDef from "@/components/FormComp/TextareaDef.vue";
 import DropdownDef from "./DropdownDef.vue";
 import { radioBtnDef, checkboxOther } from '@/utils/validateUtils';
 
+
 const emit = defineEmits(['onSent']);
 const model = defineModel("model");
 const querstionData = ref([
@@ -26,7 +27,7 @@ const querstionData = ref([
     key: "Gender",
     value: model.value.Gender,
     invalid: false,
-    required: false,
+    required: true,
     maxLenth: null, //number表示有限制字數、null表示沒有限制字數
     invalidText: "",
     options: qaGrnder.options,
@@ -39,7 +40,7 @@ const querstionData = ref([
     key: "Age",
     value: model.value.Age,
     invalid: false,
-    required: false,
+    required: true,
     maxLenth: null, //number表示有限制字數、null表示沒有限制字數
     invalidText: "",
     options: qaAge.options,
@@ -54,7 +55,7 @@ const querstionData = ref([
     key: "GetInf",
     value: model.value.GetInf,
     invalid: false,
-    required: false,
+    required: true,
     maxLenth: null, //number表示有限制字數、null表示沒有限制字數
     invalidText: "",
     options: qaGetInf.options,
@@ -67,7 +68,7 @@ const querstionData = ref([
     key: "City",
     value: model.value.City,
     invalid: false,
-    required: false,
+    required: true,
     maxLenth: null, //number表示有限制字數、null表示沒有限制字數
     invalidText: "",
     options: qaCity.options,
@@ -81,7 +82,7 @@ const querstionData = ref([
     key: "CheckTimes",
     value: model.value.CheckTimes,
     invalid: false,
-    required: false,
+    required: true,
     maxLenth: null, //number表示有限制字數、null表示沒有限制字數
     invalidText: "",
     options: qaCheckTimes.options,
@@ -94,7 +95,7 @@ const querstionData = ref([
     key: "Important",
     value: model.value.Important,
     invalid: false,
-    required: false,
+    required: true,
     maxLenth: null, //number表示有限制字數、null表示沒有限制字數
     invalidText: "",
     options: qaImportant.options,
@@ -110,7 +111,7 @@ const querstionData = ref([
     key: "Reason",
     value: model.value.Reason,
     invalid: false,
-    required: false,
+    required: true,
     maxLenth: null, //number表示有限制字數、null表示沒有限制字數
     invalidText: "",
     options: qaReason.options,
@@ -123,7 +124,7 @@ const querstionData = ref([
     key: "UseService",
     value: model.value.UseService,
     invalid: false,
-    required: false,
+    required: true,
     maxLenth: null, //number表示有限制字數、null表示沒有限制字數
     invalidText: "",
     options: qaUseService.options,
@@ -136,7 +137,7 @@ const querstionData = ref([
     key: "YorN",
     value: model.value.YorN,
     invalid: false,
-    required: false,
+    required: true,
     maxLenth: null, //number表示有限制字數、null表示沒有限制字數
     invalidText: "",
     options: qaYorN.options,
@@ -149,7 +150,7 @@ const querstionData = ref([
     key: "Describe",
     value: model.value.Describe,
     invalid: false,
-    required: false,
+    required: true,
     maxLenth: null, //number表示有限制字數、null表示沒有限制字數
     invalidText: "",
     options: qaDescribe.options,
@@ -188,7 +189,7 @@ watch(()=> model.value.onSend, (newValue) => {
 
 </script>
 <template>
-  <div v-for="topic in querstionData">
+  <div v-for="(topic, idx) in querstionData">
     <QuestionRadio
       v-if="topic.type === 'Radio'"
       v-model:selectedCategory="model[topic.key]"
@@ -198,6 +199,8 @@ watch(()=> model.value.onSend, (newValue) => {
       :invalid="topic.invalid"
       :questionId="topic.questionId"
       :invalidText="topic.invalidText"
+      :required="topic.required"
+      :index="idx + 1"
     ></QuestionRadio>
     <CheckBox_Other
       v-if="topic.type === 'CheckboxOther'"
@@ -210,6 +213,8 @@ watch(()=> model.value.onSend, (newValue) => {
       :questionId="topic.questionId"
       :otherQuestion="topic.otherQuestion"
       :invalidText="topic.invalidText"
+      :required="topic.required"
+      :index="idx + 1"
     ></CheckBox_Other>
     <DropdownDef
       v-if="topic.type === 'Dropdown'"
@@ -220,6 +225,8 @@ watch(()=> model.value.onSend, (newValue) => {
       :categories="topic.options"
       :invalid="topic.invalid"
       :invalidText="topic.invalidText"
+      :required="topic.required"
+      :index="idx + 1"
     ></DropdownDef>
     <TextareaDef v-if="topic.type === 'TextareaDef'"
       v-model:model="model[topic.key]"
@@ -228,6 +235,8 @@ watch(()=> model.value.onSend, (newValue) => {
       :placeholder="topic.placeholder"
       :invalid="topic.invalid"
       :invalidText="topic.invalidText"
+      :required="topic.required"
+      :index="idx + 1"
   ></TextareaDef>
   </div>
   

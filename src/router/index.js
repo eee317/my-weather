@@ -26,9 +26,9 @@ const routes = [
                 component: () => import('@/views/Questionnaire.vue'),
             },
             {
-                path:'/thanks',
-                name: 'Thanks',
-                component: () => import('@/views/Thanks.vue'),
+                path:'/:pathMatch(.*)*',
+                name: 'NotFound404',
+                component: () => import('@/views/NotFound404.vue'),
             },
         ],
     }

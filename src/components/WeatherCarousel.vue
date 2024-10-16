@@ -3,7 +3,9 @@ import { ref, onMounted, watch,   } from "vue";
 import WeatherAPI from "@/api/weather";
 import { getCitysImg } from "@/utils/cityImgUtils";
 import { cityFormat } from '@/utils/utils';
+import { getWeatherIcon } from '@/utils/weatherIconUtils';
 import { useApiDataStore } from '@/stores/apiDataStores';
+
 
 const useDataStore = useApiDataStore();
 const citys = ref([]);
@@ -41,9 +43,12 @@ const getCityWeather = async (cityName) => {
 const getWeatcherSeverity = (status) => {
     switch (status) {
         case '舒適':
-            return 'success';
+            return 'primary';
 
         case '舒適至悶熱':
+            return 'success';
+
+        case '悶熱':
             return 'warning';
 
         default:
@@ -124,10 +129,13 @@ watch(isDialog, newValue => {
             </div>
             <p class="mb-3 mt-0 font-black text-xl">{{ slotProps.data.locationName }}</p>
             <div class="flex justify-between align-items-center">
-                
-                <p class="mt-0 mb-1">{{ slotProps.data.weatherElement[0].time[0].parameter.parameterName }}</p>
+                <div class="flex items-center gap-2">
+                    <img height="24" width="24" :src="`/weatherIcon/${getWeatherIcon(slotProps.data.weatherElement[0].time[0].parameter.parameterValue)}`" :alt="slotProps.data.weatherElement[0].time[0].parameter.parameterName">
+                    <p class="mt-0 mb-1">{{ slotProps.data.weatherElement[0].time[0].parameter.parameterName }}</p>
+                </div>
                 <p  class="mt-0 ">{{ slotProps.data.weatherElement[2].time[0].parameter.parameterName }} ~ {{ slotProps.data.weatherElement[4].time[0].parameter.parameterName }} °C</p>
             </div>
+            <p class="mt-0 mb-1">降雨機率 {{slotProps.data.weatherElement[1].time[0].parameter.parameterName}} %</p>
         </div>
     </template>
 </Carousel>

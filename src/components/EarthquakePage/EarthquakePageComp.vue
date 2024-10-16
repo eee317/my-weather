@@ -49,7 +49,7 @@ onMounted(()=>{
   <div class="card">
       <Splitter unstyled>
           <SplitterPanel  
-          :class="{'hidden': isSide}" class="p-4 flex align-items-center justify-content-center" 
+          :class="{'hidden': isSide}" class=" p-4 flex align-items-center justify-content-center" 
           :size="leftSide"> 
             <EarthquakeList :data="useDataStore.earthquakeData" :params="theEarthquakeNo" @updateValue="updateEarthquakeNo"></EarthquakeList>
           </SplitterPanel>

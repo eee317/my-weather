@@ -33,6 +33,7 @@ const today = () => {
 </script>
 <template>
     <div class="max-w-screen-lg mx-auto px-4 py-16">
+        <div class="bg">123</div>
         <p class="text-5xl font-black px-3 my-0 ">本日全台天氣</p>
         <p class="px-3 text-2xl">{{ today() }}</p>
         <RouterLink :to="{ name: 'WeatherTable'}" class="block text-end">
@@ -51,3 +52,5 @@ const today = () => {
         <AllEarthquakeTable></AllEarthquakeTable>
     </div>
 </template>
+<style scoped lang="scss">
+</style>

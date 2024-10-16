@@ -1,4 +1,5 @@
 <script setup>
+import { FilterMatchMode, FilterOperator } from 'primevue/api';
 import { onMounted, ref } from "vue";
 import { cityFormat } from '@/utils/utils';
 import WeatherAPI from "@/api/weather";
@@ -7,6 +8,7 @@ import WeatherAPI from "@/api/weather";
 const citys = ref([]);
 const city = ref([]);
 const expandedRows = ref({});
+const filters = ref({});
 const getAllWeather = async () => {
   await WeatherAPI.getAll()
     .then((res) => {
@@ -54,6 +56,14 @@ const onRowExpand = (event) => {
   }
 };
 
+
+const initFilters = () => {
+    filters.value = {
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    };
+};
+initFilters();
+
 onMounted(() => {
   getAllWeather();
 });
@@ -66,18 +76,26 @@ onMounted(() => {
       tableStyle=""
       stripedRows
       scrollable
-      scrollHeight="700px"
+      scrollHeight="530px"
       v-model:expandedRows="expandedRows"
+      v-model:filters="filters"
       dataKey="locationName"
       @rowExpand="onRowExpand"
       paginator
-      :rows="50"
+      :rows="10"
       :rowsPerPageOptions="[5, 10, 20, 50]"
+      :pt="{header:{class:'rounded-t-md bg-primary-50 text-primary-600'}}"
+      class="my-5"
     >
       <template #header>
-        <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex flex-wrap items-center justify-between gap-2 p-3">
           <span class="text-xl text-900 font-bold">本日天氣</span>
-          <Button icon="pi pi-refresh" rounded raised />
+          <IconField iconPosition="left">
+            <InputIcon>
+              <i class="pi pi-search" />
+            </InputIcon>
+            <InputText v-model="filters['global'].value" placeholder="搜尋" />
+          </IconField>
         </div>
       </template>
       <Column expander style="width: 5rem" />

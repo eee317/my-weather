@@ -36,7 +36,8 @@ import InputGroup from 'primevue/inputgroup';
 import InputGroupAddon from 'primevue/inputgroupaddon';
 import DynamicDialog from 'primevue/dynamicdialog';
 import DialogService from 'primevue/dialogservice';
-
+import IconField from 'primevue/iconfield';
+import InputIcon from 'primevue/inputicon';
 
 import App from './App.vue';
 import './styles/style.scss';
@@ -79,5 +80,8 @@ app.component('Textarea', Textarea);
 app.component('InputGroup', InputGroup);
 app.component('InputGroupAddon', InputGroupAddon);
 app.component('DynamicDialog', DynamicDialog);
+app.component('IconField', IconField);
+app.component('InputIcon', InputIcon);
+
 
 app.mount('#app');

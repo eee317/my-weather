@@ -121,7 +121,7 @@ export default {
   indicators: {
     class: [
       // Flexbox & Alignment
-      'flex flex-row justify-center flex-wrap list-none ',
+      'flex flex-row justify-center flex-wrap list-none mt-12',
     ],
   },
   indicator: {
@@ -133,7 +133,7 @@ export default {
   indicatorbutton: ({ context }) => ({
     class: [
       // Sizing & Shape
-      'w-8 h-2 rounded-0 border-none rounded-md',
+      'w-4 h-2 rounded-0 border-none rounded-md mx-1',
 
       // Transitions
       'transition duration-200',

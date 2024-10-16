@@ -124,18 +124,25 @@ watch(isDialog, newValue => {
                 <div class="relative  mx-auto overflow-x-hidden pt-[60%] "style="width:400px;">
                     <img 
                     :src="getCitysImg(slotProps.data.locationName)" :alt="slotProps.data.locationName" class="border-round rounded-md absolute inset-0 object-cover w-full h-full"  />
-                    <Tag :value="slotProps.data.weatherElement[3].time[0].parameter.parameterName" :severity="getWeatcherSeverity(slotProps.data.weatherElement[3].time[0].parameter.parameterName)" class="absolute" style="left:12px; top: 12px"/>
+                    <Tag :value="slotProps.data.weatherElement[3].time[0].parameter.parameterName" :severity="getWeatcherSeverity(slotProps.data.weatherElement[3].time[0].parameter.parameterName)" class="absolute left-0 top-0 m-4" />
+                    <div class="absolute inset-x-0 bottom-0 p-5 text-white flex justify-between items-center" style="background-color: rgb(0 0 0 / 40%); border-radius: 0 0 8px 8px;">
+                        <p class="text-3xl m-0 font-black tracking-wider">{{ slotProps.data.locationName }}</p>
+                        <p class="m-0">降雨機率 {{slotProps.data.weatherElement[1].time[0].parameter.parameterName}} %</p>
+                    </div>
                 </div>
             </div>
-            <p class="mb-3 mt-0 font-black text-xl">{{ slotProps.data.locationName }}</p>
-            <div class="flex justify-between align-items-center">
+            <!-- <p class="mb-3 mt-0 font-black text-xl">{{ slotProps.data.locationName }}</p> -->
+            <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2">
-                    <img height="24" width="24" :src="`/weatherIcon/${getWeatherIcon(slotProps.data.weatherElement[0].time[0].parameter.parameterValue)}`" :alt="slotProps.data.weatherElement[0].time[0].parameter.parameterName">
-                    <p class="mt-0 mb-1">{{ slotProps.data.weatherElement[0].time[0].parameter.parameterName }}</p>
+                    <img height="28" width="28" :src="`/weatherIcon/${getWeatherIcon(slotProps.data.weatherElement[0].time[0].parameter.parameterValue)}`" :alt="slotProps.data.weatherElement[0].time[0].parameter.parameterName">
+                    <p class="m-0  text-zinc-500">{{ slotProps.data.weatherElement[0].time[0].parameter.parameterName }}</p>
                 </div>
-                <p  class="mt-0 ">{{ slotProps.data.weatherElement[2].time[0].parameter.parameterName }} ~ {{ slotProps.data.weatherElement[4].time[0].parameter.parameterName }} °C</p>
+                <div class="flex items-center gap-1">
+                    <span class="material-symbols-outlined mt-1 text-orange-500" >device_thermostat</span>
+                    <p  class="m-0 text-zinc-500 ">{{ slotProps.data.weatherElement[2].time[0].parameter.parameterName }} ~ {{ slotProps.data.weatherElement[4].time[0].parameter.parameterName }} °C</p>
+                </div>
             </div>
-            <p class="mt-0 mb-1">降雨機率 {{slotProps.data.weatherElement[1].time[0].parameter.parameterName}} %</p>
+            <!-- <p class="mt-0 mb-1">降雨機率 {{slotProps.data.weatherElement[1].time[0].parameter.parameterName}} %</p> -->
         </div>
     </template>
 </Carousel>

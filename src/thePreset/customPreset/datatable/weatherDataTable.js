@@ -44,14 +44,15 @@ export default {
   header: ({ props }) => ({
     class: [
       'font-bold ',
+      'rounded-t-md bg-primary-50 text-primary-600',
 
       // Shape
       props.showGridlines ? 'border-x border-t border-b-0' : 'border-y border-x-0',
 
       // Color
-      'bg-surface-50 dark:bg-surface-800',
+      ' dark:bg-surface-800',
       'border-surface-200 dark:border-surface-700',
-      'text-surface-700 dark:text-white/80',
+      ' dark:text-white/80',
     ],
   }),
   table: {
@@ -113,7 +114,7 @@ export default {
 
         // Color
         'bg-primary-50 text-primary-700 dark:bg-primary-dark-500',
-        'border-surface-200 dark:border-[#393E46] border-t-0 py-3',
+        'border-white dark:border-[#393E46] border-t-0 py-3',
         
 
         // States
@@ -157,7 +158,7 @@ export default {
         { 'px-4': !(parent.instance.frozenRow || props.frozen || props.frozen === '') },
 
         // Color
-        'border-surface-200 dark:border-[#48505D]',
+        'border-white dark:border-[#48505D]',
         //'border-surface-200 dark:border-[#48505D]',
       ],
     }),

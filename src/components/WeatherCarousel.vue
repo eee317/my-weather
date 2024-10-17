@@ -43,13 +43,13 @@ const getCityWeather = async (cityName) => {
 const getWeatcherSeverity = (status) => {
     switch (status) {
         case '舒適':
-            return 'primary';
-
-        case '舒適至悶熱':
             return 'success';
 
-        case '悶熱':
+        case '舒適至悶熱':
             return 'warning';
+
+        case '悶熱':
+            return 'danger';
 
         default:
             return null;

@@ -20,11 +20,11 @@ const isActive = (thisRoute) => {
       <template #end>
           <router-link to="/" class="mr-4">
             <Button :pt="btnNavbarClass"
-            :class="isActive('Index') ? 'bg-primary-700 text-white border-none' : 'border-primary-700 text-primary-700 bg-white'"
+            :class="isActive('Index') ? 'bg-primary-700 text-white border-none' : 'border-primary-700 text-primary-700 bg-white border-solid'"
             label="首頁" outlined /></router-link>
           <router-link :to="{name:'Questionnaire'}">
             <Button :pt="btnNavbarClass"
-            :class="isActive('Questionnaire') ? 'bg-primary-700 text-white border-none' : 'border-primary-700 text-primary-700 bg-white'"
+            :class="isActive('Questionnaire') ? 'bg-primary-700 text-white border-none' : 'border-primary-700 text-primary-700 bg-white border-solid'"
             label="問卷調查" outlined /></router-link>
       </template>
     </Toolbar>

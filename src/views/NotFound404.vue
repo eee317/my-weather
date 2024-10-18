@@ -3,7 +3,7 @@
     <div class="my-20">
       <img src="../assets/img/404-error.png" width="200" alt="找不到網頁">
       <p class="text-center">404 找不到網頁</p>
-      <!-- <div class="p-2 bg-primary-50">50</div>
+      <div class="p-2 bg-primary-50">50</div>
       <div class="p-2 bg-primary-100">100</div>
       <div class="p-2 bg-primary-200">200</div>
       <div class="p-2 bg-primary-300">300</div>
@@ -34,7 +34,7 @@
       <div class="p-2 bg-surface-600">600</div>
       <div class="p-2 bg-surface-700">700</div>
       <div class="p-2 bg-surface-800">800</div>
-      <div class="p-2 bg-surface-900">900</div> -->
+      <div class="p-2 bg-surface-900">900</div>
       
     </div>
   </div>

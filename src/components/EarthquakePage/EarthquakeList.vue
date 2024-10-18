@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router';
 import {ref, defineProps, onMounted, watch, defineEmits} from 'vue';
 import { nextTick } from 'vue';
 import { matchDate, resultTitle, resultColor } from '@/utils/utils';
+import datatableSide from '@/thePreset/customPreset/datatable/earthquakeSideDatatable';
 const props = defineProps({
     data: {
         type: Array,
@@ -45,7 +46,8 @@ onMounted( async ()=>{
 })
 </script>
 <template>
-    <DataTable :pt="{column:{ headercell:{class:'bg-primary-100 text-primary-700 dark:bg-primary-dark-500 py-3'}}}" 
+  <!-- :pt="{column:{ headercell:{class:'bg-primary-100 text-primary-700 dark:bg-primary-dark-500 py-3'}}} -->
+    <DataTable :pt="datatableSide" 
       :value="props.data" tableStyle=""
       v-model:selection="selectedData" selectionMode="single" dataKey="EarthquakeNo">
     <Column style="width: 3%">

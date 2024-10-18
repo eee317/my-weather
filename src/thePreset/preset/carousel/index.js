@@ -121,7 +121,7 @@ export default {
   indicators: {
     class: [
       // Flexbox & Alignment
-      'flex flex-row justify-center flex-wrap list-none ',
+      'flex flex-row justify-center flex-wrap list-none mt-12',
     ],
   },
   indicator: {
@@ -133,7 +133,7 @@ export default {
   indicatorbutton: ({ context }) => ({
     class: [
       // Sizing & Shape
-      'w-8 h-2 rounded-0 border-none rounded-md',
+      'w-4 h-2 rounded-0 border-none rounded-md mx-1',
 
       // Transitions
       'transition duration-200',
@@ -143,8 +143,8 @@ export default {
 
       // Color & Background
       {
-        'bg-surface-200 hover:bg-surface-300 dark:bg-surface-700 dark:hover:bg-surface-600': !context.highlighted,
-        'bg-primary-500 hover:bg-primary-600': context.highlighted,
+        'bg-surface-100 hover:bg-surface-300 dark:bg-surface-700 dark:hover:bg-surface-600': !context.highlighted,
+        'bg-primary-600 hover:bg-primary-700': context.highlighted,
       },
     ],
   }),

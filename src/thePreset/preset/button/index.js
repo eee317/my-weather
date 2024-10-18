@@ -191,9 +191,9 @@ export default {
             'hover:bg-primary-700': !(props.text || props.outlined || props.link),
           },
           'focus:ring-primary-300 dark:focus:ring-primary-300/50',
-          { 'text-primary-600 dark:text-primary-300': props.text || props.outlined },
-          { 'border-primary-600 hover:bg-primary-600 hover:text-white': props.outlined },
-          { 'dark:border-primary-300 dark:hover:border-primary-600 dark:hover:bg-primary-600': props.outlined },
+          { 'text-primary-700 dark:text-primary-300': props.text || props.outlined },
+          { 'border-primary-700 hover:bg-primary-700 hover:text-white': props.outlined },
+          { 'dark:border-primary-300 dark:border-solid dark:hover:border-primary-600 dark:hover:bg-primary-600': props.outlined },
           { 'hover:bg-primary-300/20': props.text },
         ];
         break;
@@ -201,6 +201,7 @@ export default {
     return {
       class: [
         'relative group',
+        
 
         // Alignments
         'items-center inline-flex text-center align-bottom justify-center',
@@ -223,7 +224,7 @@ export default {
         ...severity,
         {
           'bg-transparent border-transparent': props.text,
-          'bg-transparent border': props.outlined,
+          'bg-transparent border border-solid': props.outlined,
           'border-none':
             !(props.text || props.outlined || props.link) && props.severity !== 'dg-primary' && props.severity !== 'dg-secondary' && props.severity !== 'dg-danger' && props.severity !== 'dg-warning',
         },

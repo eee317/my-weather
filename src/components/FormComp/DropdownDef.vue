@@ -1,4 +1,5 @@
 <script setup>
+ import TitleQuestion from './TitleQuestion.vue';
  import { ref, watch, defineEmits, defineProps, defineModel } from 'vue';
  const props = defineProps({
   categories: {
@@ -40,9 +41,11 @@ watch(()=> model.value, ( newValue ) => {
 })
 </script>
 <template>
-  <div>
-    <p class="mb-2 mt-0"><span class="pr-2 py-2">{{ index }}.</span>{{ question }}<span v-if="required" class="text-red-400">*</span></p>
-    <p v-if="invalidText && invalid" class="text-red-400 mt-0 mb-2">{{ invalidText }}</p>
+  <div class="py-3">
+    <TitleQuestion 
+    :question="question" :index="index" :invalid="invalid" :invalidText="invalidText" :required="required"></TitleQuestion>
+    <!-- <p class="mb-2 mt-0"><span class="pr-2 py-2">{{ index }}.</span>{{ question }}<span v-if="required" class="text-red-400">*</span></p>
+    <p v-if="invalidText && invalid" class="text-red-400 mt-0 mb-2">{{ invalidText }}</p> -->
       <Dropdown
         v-model="model"
         :options="categories"
@@ -50,7 +53,7 @@ watch(()=> model.value, ( newValue ) => {
         optionValue="value"
         :placeholder="placeholder"
         :invalid="invalid"
-        class="w-full md:w-14rem"
+        class="w-1/2 md:w-14rem mt-2 ml-12"
         :pt="{
           list: { class: 'p-0' },
           wrapper: {

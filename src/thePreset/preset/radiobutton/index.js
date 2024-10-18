@@ -37,9 +37,9 @@ export default {
             // Colors
             {
                 //checked
-                'bg-primary-500 dark:bg-primary-600': !props.disabled && props.value === props.modelValue && props.value !== undefined,
+                'bg-primary-600 dark:bg-primary-600': !props.disabled && props.value === props.modelValue && props.value !== undefined,
 
-                'bg-primary-500 dark:bg-primary-600/60': props.disabled && props.value === props.modelValue && props.value !== undefined,
+                'bg-primary-600 dark:bg-primary-600/60': props.disabled && props.value === props.modelValue && props.value !== undefined,
 
                 //no checked
                 'bg-surface-0 dark:bg-primary-dark-300': !props.disabled && props.value !== props.modelValue && props.value !== undefined,
@@ -49,10 +49,10 @@ export default {
             },
             {
                 //invalid
-                'border-red-500 dark:border-red-400': props.invalid,
+                'border-rose-600 dark:border-orange-400': props.invalid,
 
                 //checked
-                'border-primary-500 dark:border-primary-dark-300': !props.invalid && props.value === props.modelValue && props.value !== undefined,
+                'border-primary-600 dark:border-primary-dark-300': !props.invalid && props.value === props.modelValue && props.value !== undefined,
 
                 //no checked
                 'border-surface-300 dark:border-primary-dark-400': !props.invalid && props.value !== props.modelValue && props.value !== undefined,
@@ -61,7 +61,7 @@ export default {
 
             // States
             {
-                'peer-hover:border-primary-500 dark:peer-hover:border-primary-dark-100': !props.disabled && !props.invalid,
+                'peer-hover:border-primary-600 dark:peer-hover:border-primary-dark-100': !props.disabled && !props.invalid,
                 'peer-focus-visible:border-primary-500 dark:peer-focus-visible:border-primary-400 peer-focus-visible:ring-2 peer-focus-visible:ring-primary-400/20 dark:peer-focus-visible:ring-0': !props.disabled,
             }
         ]

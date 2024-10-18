@@ -1,5 +1,6 @@
 <script setup>
   import { ref, watch, defineEmits, defineProps, defineModel } from 'vue';
+  import TitleQuestion from './TitleQuestion.vue';
   const emits = defineEmits(["update:invalid"]);
   const props = defineProps({
   categories: {
@@ -45,12 +46,13 @@ watch(()=> selectedCategory.value, (newValue) =>{
 
 </script>
 <template>
-  <div>
-    <p class="mt-2 mb-1"><span class="pr-2 py-2">{{ index }}.</span>{{ question }}<span v-if="required" class="text-red-400">*</span></p>
-    <p v-if="invalidText && invalid" class="text-red-400 mt-0 mb-2">{{ invalidText }}</p>
-    <div v-for="category in categories" :key="category.key + questionId" class="flex items-center">
-        <RadioButton v-model="selectedCategory" :inputId="category.key + questionId" name="dynamic" :value="category.value" :invalid="invalid" />
-        <label :for="category.key + questionId" class="ml-2" :class="{ 'text-primary-400': selectedCategory === category.value }">{{ category.value }}</label>
-      </div>
+  <div class="py-3">
+    <TitleQuestion 
+    :question="question" :index="index" :invalid="invalid" :invalidText="invalidText" :required="required"></TitleQuestion>
+    <div v-for="category in categories" :key="category.key + questionId" class="flex items-center py-1 pl-12">
+      <RadioButton v-model="selectedCategory" :inputId="category.key + questionId" name="dynamic" :value="category.value" :invalid="invalid" />
+      <label :for="category.key + questionId" class="ml-2 text-green-800" 
+      :class="[selectedCategory === category.value ? 'font-bold' : '', invalid? 'text-rose-600': '']">{{ category.value }}</label>
+    </div>
   </div>
 </template>

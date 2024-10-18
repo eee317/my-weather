@@ -7,6 +7,7 @@ import {
   defineModel,
   toValue,
 } from "vue";
+import TitleQuestion from './TitleQuestion.vue';
 
 const props = defineProps({
   categories: {
@@ -75,33 +76,32 @@ watch(
 );
 </script>
 <template>
-  <div>
-    <p class="mb-1 mt-0"><span class="pr-2 py-2">{{ index }}.</span>{{ question }}<span v-if="required" class="text-red-400">*</span></p>
-    <p v-if="invalidText && invalid" class="text-red-400 mt-0 mb-2">{{ invalidText }}</p>
+  <div class="py-3">
+    <TitleQuestion 
+    :question="question" :index="index" :invalid="invalid" :invalidText="invalidText" :required="required"></TitleQuestion>
     <div
       v-for="category in categories"
       :key="category.key + questionId"
-      class="py-1 flex items-center gap-1"
+      class="py-1 pl-12 flex items-center gap-1"
     >
       <Checkbox
+        class="my-1 mr-1"
         v-model="selectedCategory"
         :inputId="category.key + questionId"
         name="category"
         :value="category.key"
         :invalid="invalid"
       />
+    
       <label
-        :class="{ 'text-primary-400': selectedCategory.includes(category.key) }"
+        :class="[selectedCategory.includes(category.key) ? 'font-bold' : '', invalid? 'text-rose-600': '']"
         :for="category.key + questionId"
+        class="text-green-800"
         >{{ category.value }}</label>
       <div
         v-if="selectedCategory.includes('Other') && category.key === 'Other'"
       >
-      
-        <!-- <label :for="'other' + category.key">{{ otherQuestion }}</label> -->
         <InputText :id="'other' + category.key" v-model="otherModel" :placeholder="otherQuestion" />
-        <!-- <FloatLabel>
-        </FloatLabel> -->
       </div>
     </div>
   </div>

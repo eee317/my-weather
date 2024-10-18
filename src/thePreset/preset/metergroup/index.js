@@ -77,6 +77,7 @@ export default {
       'inline-flex',
       'items-center',
       'gap-2',
+      'text-primary-700 font-bold'
     ],
   },
   labellisttype: {

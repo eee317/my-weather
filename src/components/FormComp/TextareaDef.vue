@@ -41,9 +41,7 @@ watch(()=> model.value, ( newValue ) => {
   <div class="py-3">
     <TitleQuestion 
     :question="question" :index="index" :invalid="invalid" :invalidText="invalidText" :required="required"></TitleQuestion>
-    <!-- <p class="mb-2 mt-0"><span class="pr-2 py-2">{{ index }}.</span>{{ question }}<span v-if="required" class="text-red-400">*</span></p>
-    <p v-if="invalidText && invalid" class="text-red-400 mt-0 mb-2">{{ invalidText }}</p> -->
     <Textarea 
-      v-model="model" :invalid="invalid" rows="5" cols="30" class="w-full mt-3" :placeholder="placeholder" />
+      v-model="model" :invalid="invalid" rows="5" cols="30" class="w-5/6 mt-3 mx-12" :placeholder="placeholder" />
   </div>
 </template>

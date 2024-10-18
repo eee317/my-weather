@@ -39,9 +39,9 @@ export default {
             // Colors
             {
                 //checked
-                'bg-primary-500 dark:bg-primary-600': !props.disabled && context.checked,
+                'bg-primary-600 dark:bg-primary-600': !props.disabled && context.checked,
 
-                'bg-primary-500 dark:bg-primary-600/60': props.disabled && context.checked,
+                'bg-primary-600 dark:bg-primary-600/60': props.disabled && context.checked,
 
                 //no checked
                 'bg-surface-0 dark:bg-primary-dark-300': !props.disabled && !context.checked,
@@ -50,17 +50,17 @@ export default {
                 'bg-surface-100 dark:bg-primary-dark-600': props.disabled && !context.checked,
             },
             {
-                'border-red-500 dark:border-red-400': props.invalid,
+                'border-rose-600 dark:border-red-400': props.invalid,
                 //checked
-                'border-primary-500 dark:border-primary-dark-300': !props.invalid && context.checked,
+                'border-primary-600 dark:border-primary-dark-300': !props.invalid && context.checked,
                 //no checked
                 'border-surface-300 dark:border-primary-dark-400': !props.invalid && !context.checked,
             },
 
             // States
             {
-                'peer-hover:border-primary-500 dark:peer-hover:border-primary-dark-100': !props.disabled && !props.invalid,
-                'peer-focus-visible:border-primary-500 dark:peer-focus-visible:border-primary-400 peer-focus-visible:ring-2 peer-focus-visible:ring-primary-400/20 dark:peer-focus-visible:ring-0': !props.disabled,
+                'peer-hover:border-primary-600 dark:peer-hover:border-primary-dark-100': !props.disabled && !props.invalid,
+                'peer-focus-visible:border-primary-600 dark:peer-focus-visible:border-primary-400 peer-focus-visible:ring-2 peer-focus-visible:ring-primary-400/20 dark:peer-focus-visible:ring-0': !props.disabled,
             },
         ]
     }),

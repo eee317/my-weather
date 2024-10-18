@@ -2,6 +2,7 @@
 import { ref, defineProps, defineModel, watch, defineEmits } from 'vue';
 import { validatName, validatEmail, validatTelephone} from '@/utils/validateUtils';
 import { qaContact } from '@/utils/question';
+import TitleQuestion from './TitleQuestion.vue';
 const props = defineProps({
   question: {
     type: String,
@@ -113,13 +114,15 @@ watch(()=> model.value.onSend, (newValue) => {
 <template>
   <div>
     <div class="my-6">
-      <p>{{ qaContact.question }}</p> 
-      <div class="mb-4">
+      <TitleQuestion 
+    :question="qaContact.question" :index="11" :invalid="false" invalidText="" :required="false"></TitleQuestion>
+
+      <div class="my-4 ml-12">
         <Checkbox v-model="model.required" @click="doRequired" binary inputId="wishes" name="userForm" />
-        <label for="wishes" class="ml-2"> 我有意願留下聯絡資料 </label>
+        <label for="wishes" class="ml-2 text-green-800" :class="model.required?'font-bold':''"> 我有意願留下聯絡資料 </label>
       </div>
       
-      <div v-if="model.required" class="flex gap-2 flex-col sm:flex-row">
+      <div v-if="model.required" class="flex gap-2 flex-col sm:flex-row w-4/5 px-12 w-full text-base">
         <div v-for="(user, idx) in userFormData" class="w-full">
           <InputGroup>
             <InputGroupAddon>
@@ -128,7 +131,7 @@ watch(()=> model.value.onSend, (newValue) => {
             <InputText v-model.lazy="model[user.key]" @blur="checkInvalid(idx)"
             :placeholder="user.placeholder" :invalid="user.invalid" />
           </InputGroup>
-          <p class="mt-2 mb-0 text-sm text-red-500"
+          <p class="mt-2 mb-0 text-sm text-rose-600 font-bold text-end"
           >{{ user.invalidText }}</p>
         </div>
       </div>

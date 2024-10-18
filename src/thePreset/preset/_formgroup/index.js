@@ -17,7 +17,7 @@ export default {
         disabled: 'bg-surface-200'
     },
     text: {
-        normal: 'text-surface-900',
+        normal: 'text-primary-700',
         disabled: 'text-surface-900',
         placeholder: 'text-surface-400'
     },
@@ -28,7 +28,7 @@ export default {
             'border-surface-300 dark:border-surface-300': !invalid && !disabled,
 
             //Invalid
-            'border-red-500': invalid,
+            'border-rose-600': invalid,
 
             //Disabled
             'border-surface-300': disabled,

@@ -42,7 +42,7 @@ export default {
 
       // Colors
       'bg-white dark:bg-primary-dark-200',
-      'text-neutral-700 dark:text-neutral-300',
+      'text-primary-700 dark:text-neutral-300',
     ],
   }),
   title: {

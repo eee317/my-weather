@@ -127,7 +127,8 @@ const showDailog = ( state = false ) => {
 <template>
   <main class="max-w-screen-md mx-auto px-4 py-16">
     <PanelQuestion></PanelQuestion>
-    <MeterGroup :value="barValue" class="py-5 mb-6 sticky top-[81px] z-50 bg-white" />
+    <MeterGroup :pt="{label:{class:'md:text-base text-xs'}, labelicon:{class:'md:text-base text-xs'}}"
+    :value="barValue" class="py-2 md:py-5 mb-6 sticky top-[54px] md:top-[81px] z-50 bg-white" />
 
     <DividerTitle title="問卷開始" class="pb-7"></DividerTitle>
 

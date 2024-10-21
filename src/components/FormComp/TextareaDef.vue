@@ -41,7 +41,9 @@ watch(()=> model.value, ( newValue ) => {
   <div class="py-3">
     <TitleQuestion 
     :question="question" :index="index" :invalid="invalid" :invalidText="invalidText" :required="required"></TitleQuestion>
-    <Textarea 
-      v-model="model" :invalid="invalid" rows="5" cols="30" class="w-5/6 mt-3 mx-12" :placeholder="placeholder" />
+    <div class="relative h-40">
+      <Textarea 
+        v-model="model" :invalid="invalid" rows="5" cols="30" class="md:w-5/6 mt-3 md:mx-12 ml-12 absolute inset-0" :placeholder="placeholder" />
+    </div>
   </div>
 </template>

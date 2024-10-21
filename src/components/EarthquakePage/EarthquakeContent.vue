@@ -12,12 +12,12 @@ const props = defineProps({
 
 
 console.log('props.selectedDataMain',props.selectedDataMain);
-const imgValue = ref('圖片樣式1');
-const options = ref(['圖片樣式1', '圖片樣式2']);
+const imgValue = ref('震動圖像');
+const options = ref(['震動圖像', '圖像報告']);
 const imgUrl = (str) => {
   const url = {
-    '圖片樣式1': props.selectedDataMain.ReportImageURI,
-    '圖片樣式2': props.selectedDataMain.ShakemapImageURI,
+    '震動圖像': props.selectedDataMain.ShakemapImageURI,
+    '圖像報告': props.selectedDataMain.ReportImageURI,
   }
   return url[str] || props.selectedDataMain.ReportImageURI;
 }
@@ -41,17 +41,16 @@ const imageSrc = computed(() => {
     </div>
   
     
-    <p class="text-3xl mt-4 leading-normal text-primary-800 font-bold tracking-wide">{{ resultTitle(props.selectedDataMain.ReportContent) }}</p>
+    <p class="text-xl md:text-3xl mt-4 leading-normal text-primary-800 font-bold tracking-wide">{{ resultTitle(props.selectedDataMain.ReportContent) }}</p>
 
 
-   
-    <p class="mt-2 mb-2 text-primary-600 tracking-wide"> ✻ {{ props.selectedDataMain.ReportRemark }}</p>
+    <p class="text-xs md:text-base mt-2 mb-2 text-primary-600 tracking-wide"> ✻ {{ props.selectedDataMain.ReportRemark }}</p>
     <div class="border-2 border-solid border-primary-500 py-12 px-2 rounded-lg">
-      <div class="flex justify-between px-14 pb-4">
+      <div class="flex flex-wrap justify-center md:justify-between gap-2 px-4 md:px-14 pb-4">
       
-        <SelectButton class="" v-model="imgValue" :options="options" aria-labelledby="basic" />
+        <SelectButton v-model="imgValue" :options="options" aria-labelledby="basic" />
         <a :href="props.selectedDataMain.Web" target="_blank" rel="noopener">
-          <Button type="button" class="h-full" label="前往中央氣象署網站查看"  ></Button>
+          <Button type="button" class="h-full" label="前往中央氣象署網站查看"></Button>
         </a>
       </div>
       <div class=" relative overflow-hidden pt-[60%] " >

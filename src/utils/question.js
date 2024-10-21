@@ -100,7 +100,7 @@ export const qaImportant =
 export const qaReason =
 {
   questionId:'2024100807',
-  question: "您通常會因哪些原因關注天氣變化？",
+  question: "您通常會因哪些原因關注天氣變化？（可複選）",
   otherQuestion: "請說明",
   options: [
     {value:"安排戶外活動", key:"安排活動"},

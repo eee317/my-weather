@@ -47,16 +47,16 @@ function  getImageUrl (imgName, ext) {
     
         <div class="max-w-screen-lg mx-auto my-28">
             <div class="flex justify-center flex-col items-center relative">
-                <Title class="absolute pb-16" title="地震資訊" :isTime="false" :imgSrc="getImageUrl('earthquake-area-img', 'svg')" ></Title>
+                <Title class="absolute md:pb-16 pb-1" title="地震資訊" :isTime="false" :imgSrc="getImageUrl('earthquake-area-img', 'svg')" ></Title>
                 <img src="../assets/img/grassland.png" class=" w-4/5 mb-[-7.2%] " style="z-index: -10;" alt="">
             </div>
             <div class="relative z-0 mx-6">
                 <div class="border-image p-2 sm:p-10 lg:p-20">
                     <div class="flex items-center gap-3">
                         <img src="../assets/img/earthquake-symbol.svg" alt="所有地震報告">
-                        <p class="font-semibold m-plus-font text-3xl text-zinc-500 m-0">所有地震報告</p>
+                        <p class="font-semibold m-plus-font md:text-3xl text-2xl text-zinc-500 m-0">所有地震報告</p>
                     </div>
-                    <p class=" lg:pb-12 text-zinc-500 text-lg">※ 本報告為中央氣象署地震觀測網即時地震資料地震速報之結果</p>
+                    <p class=" lg:pb-12 text-zinc-500 text-lg my-2 md:text-base text-sm">※ 本報告為中央氣象署地震觀測網即時地震資料地震速報之結果</p>
                     <AllEarthquakeTable></AllEarthquakeTable>
                 </div>
             </div>

@@ -51,7 +51,7 @@ const querstionData = ref([
   {
     type: "CheckboxOther",
     keyOther:'GetOther',
-    otherQuestion:qaGetInf.GetOther,
+    otherQuestion:qaGetInf.otherQuestion,
     key: "GetInf",
     value: model.value.GetInf,
     invalid: false,

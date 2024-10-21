@@ -29,11 +29,11 @@ const props = defineProps({
     <div class="flex items-center gap-5">
       <img
         :src="imgSrc"
-        width="110"
+        class="md:w-28 w-14"
         :alt="title"
       />
       <div class="content-center">
-        <p class="text-5xl my-0 text-primary-700 font-bold m-plus-font">
+        <p class="text-3xl md:text-5xl my-0 text-primary-700 font-bold m-plus-font">
           {{ title }}
         </p>
         <p v-if="isTime" class="m-0 pt-2 text-zinc-500 font-bold">{{ today() }}</p>

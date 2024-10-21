@@ -112,7 +112,7 @@ const insideDataTableClass = ref({
 
 </script>
 <template>
-  <div style="max-width: 1000px; margin-left: auto; margin-right: auto">
+  <div style="max-width: 1000px; " class="mx-auto md:px-0 px-2">
     <Toast></Toast>
     <DataTable
       :value="citys"
@@ -128,7 +128,7 @@ const insideDataTableClass = ref({
       :rows="10"
       :rowsPerPageOptions="[5, 10, 20, 50]"
       :pt="DataTableClass "
-      class="my-5"
+      class="my-5 text-xs md:text-base"
     >
 
     <!-- :pt="{

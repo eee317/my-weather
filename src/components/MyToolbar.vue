@@ -19,7 +19,6 @@ const isActive = (thisRoute) => {
         </router-link>
       </template>
       <template #end>
-
           <router-link to="/" class="mr-4">
             <Button 
             class="text-xs md:text-base"

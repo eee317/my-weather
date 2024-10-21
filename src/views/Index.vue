@@ -36,7 +36,7 @@ function  getImageUrl (imgName, ext) {
         </div>
         <Loading v-if="loadingStore.isLoading" class="lg:max-w-screen-lg mx-auto pb-16  mb-20 mt-10" ></Loading>
         <div class="lg:max-w-screen-lg lg:mx-auto px-4 pb-16 mb-20">
-            <RouterLink v-if="!loadingStore.isLoading" :to="{ name: 'WeatherTable'}" class="block text-end mr-16">
+            <RouterLink v-if="!loadingStore.isLoading" :to="{ name: 'WeatherTable'}" class="block text-end mr-16 mt-6">
                 <Button 
                     type="button" 
                     iconPos="right" icon="pi pi-arrow-right"

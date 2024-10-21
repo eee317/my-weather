@@ -15,6 +15,7 @@ const WeatherAPI = {
             return response.data.records;
         } catch (error) {
             console.error(error);
+            loadingStore.setLoading(false);
             throw error;
         }finally {
             loadingStore.setLoading(false); // 完成後設為 false

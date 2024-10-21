@@ -6,7 +6,6 @@ import { cityFormat } from '@/utils/utils';
 import { getWeatherIcon } from '@/utils/weatherIconUtils';
 import { useApiDataStore } from '@/stores/apiDataStores';
 
-
 const useDataStore = useApiDataStore();
 const citys = ref([]);
 const city = ref([]);
@@ -79,8 +78,8 @@ const responsiveOptions = ref([
     }
 ]);
 
-onMounted(() => {
-  getAllWeather();
+onMounted( () => {
+    getAllWeather();
 });
 
 
@@ -147,8 +146,11 @@ watch(isDialog, newValue => {
     </template>
 </Carousel>
 
-<Dialog v-model:visible="isDialog" modal :header="dialogData[0]?.locationName" class="w-[900px]">
-    <DataTable stripedRows scrollable scrollHeight="400px"
+<Dialog v-model:visible="isDialog" modal :header="dialogData[0]?.locationName" class="w-[900px] min-h-96">
+    <DataTable 
+    :pt="{
+        column:{headercell:{class:'hover:bg-primary-50 bg-primary-50 py-3 text-primary-700'}}}"
+    stripedRows scrollable 
     :value="dialogData[0]?.location" dataKey="locationName" >
         <Column class="text-center" field="locationName" header="縣市名稱"></Column>
         <Column class="text-center" field="天氣現象" header="天氣現象"></Column>

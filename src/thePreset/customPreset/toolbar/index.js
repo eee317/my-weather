@@ -24,6 +24,6 @@ export default {
     class: 'flex items-center',
   },
   end: {
-    class: 'flex items-center',
+    class: 'flex items-center justify-end',
   },
 };

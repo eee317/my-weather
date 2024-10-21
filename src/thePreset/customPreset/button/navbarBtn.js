@@ -12,7 +12,7 @@ export const btnNavbarClass = {
         // Sizes & Spacing
         'leading-[normal]',
         {
-          'text-base py-2 px-3': props.size === null,
+          'text-base py-1 px-2 md:py-2 md:px-3': props.size === null,
           'text-sm py-2 px-3': props.size === 'small',
           'text-xl py-2 px-3': props.size === 'large',
           'py-1 px-2': props.size === 'datagrid',

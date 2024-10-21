@@ -38,6 +38,7 @@ import DynamicDialog from 'primevue/dynamicdialog';
 import DialogService from 'primevue/dialogservice';
 import IconField from 'primevue/iconfield';
 import InputIcon from 'primevue/inputicon';
+import Skeleton from 'primevue/skeleton';
 
 import App from './App.vue';
 import './styles/style.scss';
@@ -82,6 +83,7 @@ app.component('InputGroupAddon', InputGroupAddon);
 app.component('DynamicDialog', DynamicDialog);
 app.component('IconField', IconField);
 app.component('InputIcon', InputIcon);
+app.component('Skeleton', Skeleton);
 
 
 app.mount('#app');

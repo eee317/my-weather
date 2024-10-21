@@ -145,7 +145,7 @@ export const qaDescribe =
 export const qaContact =
 {
   questionId:'2024100811',
-  question: " 如果願意的話，請留下您的聯絡資訊，讓我們聯繫您做訪談。將會有神秘小禮物做為回饋。",
+  question: " 如果願意的話，請留下您的聯絡資訊，讓我們聯繫您做訪談。",
   options: [],
   // input:[
   //   {question:'姓名',key:'name'},

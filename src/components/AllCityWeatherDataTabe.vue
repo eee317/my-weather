@@ -4,7 +4,9 @@ import { onMounted, ref } from "vue";
 import { cityFormat } from '@/utils/utils';
 import WeatherAPI from "@/api/weather";
 import DataTableClass from "../thePreset/customPreset/datatable/weatherDataTable";
+import { useLoadingStore } from "/src/stores/loading.js";
 
+const loadingStore = useLoadingStore();
 
 const citys = ref([]);
 const city = ref([]);
@@ -148,11 +150,21 @@ const insideDataTableClass = ref({
         </div>
       </template>
       <Column expander style="width: 5rem" />
-      <Column field="locationName" header="縣市名稱" sortable class="text-center"></Column>
-      <Column field="降雨機率" header="降雨機率" sortable class="text-center"></Column>
-      <Column field="溫度" header="溫度" sortable class="text-center"></Column>
-      <Column field="天氣現象" header="天氣現象" sortable class="text-center"></Column>
-      <Column field="舒適度" header="舒適度" sortable class="text-center"></Column>
+      <Column field="locationName" header="縣市名稱" sortable class="text-center">
+        <template #body v-if="loadingStore.isLoading"><Skeleton ></Skeleton></template>
+      </Column>
+      <Column field="降雨機率" header="降雨機率" sortable class="text-center">
+        <template #body v-if="loadingStore.isLoading"><Skeleton ></Skeleton></template>
+      </Column>
+      <Column field="溫度" header="溫度" sortable class="text-center">
+        <template #body v-if="loadingStore.isLoading"><Skeleton ></Skeleton></template>
+      </Column>
+      <Column field="天氣現象" header="天氣現象" sortable class="text-center">
+        <template #body v-if="loadingStore.isLoading"><Skeleton ></Skeleton></template>
+      </Column>
+      <Column field="舒適度" header="舒適度" sortable class="text-center">
+        <template #body v-if="loadingStore.isLoading"><Skeleton ></Skeleton></template>
+      </Column>
       <!-- 開合子層 start -->
       <template #expansion="slotProps">
         <div class="p-3">
@@ -169,10 +181,18 @@ const insideDataTableClass = ref({
             
           >
             <Column field="locationName"> </Column>
-            <Column class="text-center" field="降雨機率" ></Column>
-            <Column class="text-center" field="溫度" ></Column>
-            <Column class="text-center" field="天氣現象" ></Column>
-            <Column class="text-center" field="舒適度" ></Column>
+            <Column class="text-center" field="降雨機率" >
+              <template #body v-if="loadingStore.isLoading"><Skeleton ></Skeleton></template>
+            </Column>
+            <Column class="text-center" field="溫度" >
+              <template #body v-if="loadingStore.isLoading"><Skeleton ></Skeleton></template>
+            </Column>
+            <Column class="text-center" field="天氣現象" >
+              <template #body v-if="loadingStore.isLoading"><Skeleton ></Skeleton></template>
+            </Column>
+            <Column class="text-center" field="舒適度" >
+              <template #body v-if="loadingStore.isLoading"><Skeleton ></Skeleton></template>
+            </Column>
           </DataTable>
         </div>
       </template>

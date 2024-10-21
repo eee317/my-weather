@@ -67,12 +67,12 @@ function  getImageUrl (imgName, ext) {
 .weather-bg{
     background: linear-gradient(to top, #ffffff  , #C0F4EA );
 }
-.weather-img{
-    background-image: url('../assets/img/cloud.svg');
-    background-repeat: repeat-x;
-    background-size:contain ;
-    height: 100%;
-}
+// .weather-img{
+//     background-image: url('../assets/img/cloud.svg');
+//     background-repeat: repeat-x;
+//     background-size:contain ;
+//     height: 100%;
+// }
 .border-image{
     --borderWidth: 5px;
     background: #ffff;

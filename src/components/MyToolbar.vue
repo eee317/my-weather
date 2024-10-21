@@ -23,13 +23,13 @@ const isActive = (thisRoute) => {
             <Button 
             class="text-xs md:text-base"
             :pt="btnNavbarClass"
-            :class="isActive('Index') ? 'bg-primary-700 text-white border-none' : 'border-primary-700 text-primary-700 bg-white border-solid'"
+            :class="isActive('Index') ? 'bg-primary-700 text-white border border-primary-700 border-solid' : 'border-primary-700 text-primary-700 bg-white border-solid'"
             label="首頁" outlined /></router-link>
           <router-link :to="{name:'Questionnaire'}">
             <Button 
-            class="text-xs md:text-base"
+            class="text-xs md:text-base "
             :pt="btnNavbarClass"
-            :class="isActive('Questionnaire') ? 'bg-primary-700 text-white border-none' : 'border-primary-700 text-primary-700 bg-white border-solid'"
+            :class="isActive('Questionnaire') ? 'bg-primary-700 text-white border border-primary-700 border-solid' : 'border-primary-700 text-primary-700 bg-white border-solid'"
             label="問卷調查" outlined /></router-link>
       </template>
     </Toolbar>

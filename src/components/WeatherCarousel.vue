@@ -69,12 +69,12 @@ const responsiveOptions = ref([
     {
         breakpoint: '767px',
         numVisible: 2,
-        numScroll: 1
+        numScroll: 2
     },
     {
         breakpoint: '575px',
-        numVisible: 1,
-        numScroll: 1
+        numVisible: 2,
+        numScroll: 2
     }
 ]);
 
@@ -114,31 +114,32 @@ watch(isDialog, newValue => {
 
 </script>
 <template>
-    <Carousel :value="citys" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" circular :autoplayInterval="carouselAut" 
+    <Carousel :value="citys" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" circular :autoplayInterval="carouselAut"
     class="mt-3" 
     >
     <template #item="slotProps">
-        <div class="border-1 surface-border border-round m-2 p-3"  @click="onDialog(slotProps.data.locationName)">
-            <div class="mb-3">
-                <div class="relative  mx-auto overflow-x-hidden pt-[60%] "style="width:400px;">
-                    <img 
-                    :src="getCitysImg(slotProps.data.locationName)" :alt="slotProps.data.locationName" class="border-round rounded-md absolute inset-0 object-cover w-full h-full"  />
-                    <Tag :value="slotProps.data.weatherElement[3].time[0].parameter.parameterName" :severity="getWeatcherSeverity(slotProps.data.weatherElement[3].time[0].parameter.parameterName)" class="absolute left-0 top-0 m-4" />
-                    <div class="absolute inset-x-0 bottom-0 p-5 text-white flex justify-between items-center" style="background-color: rgb(0 0 0 / 40%); border-radius: 0 0 8px 8px;">
-                        <p class="text-3xl m-0 font-black tracking-wider">{{ slotProps.data.locationName }}</p>
-                        <p class="m-0">降雨機率 {{slotProps.data.weatherElement[1].time[0].parameter.parameterName}} %</p>
+        <div class="border-1 surface-border border-round m-2 p-3 w-full"  @click="onDialog(slotProps.data.locationName)">
+            <div class="mb-3 ">
+                    <div class="relative  mx-auto overflow-x-hidden pt-[60%] ">
+                        <img 
+                        :src="getCitysImg(slotProps.data.locationName)" :alt="slotProps.data.locationName" class="border-round rounded-md absolute inset-0 object-cover w-full h-full"  />
+                        <Tag :value="slotProps.data.weatherElement[3].time[0].parameter.parameterName" :severity="getWeatcherSeverity(slotProps.data.weatherElement[3].time[0].parameter.parameterName)" class="absolute left-0 top-0 m-4" />
+                        <div class="absolute inset-x-0 bottom-0 p-5 text-white flex justify-between items-center" style="background-color: rgb(0 0 0 / 40%); border-radius: 0 0 8px 8px;">
+                            <p class="sm:text-3xl m-0 font-black tracking-wider">{{ slotProps.data.locationName }}</p>
+                            <p class="m-0 text-xs sm:text-base">降雨機率 {{slotProps.data.weatherElement[1].time[0].parameter.parameterName}} %</p>
+                        </div>
                     </div>
-                </div>
+                
             </div>
             <!-- <p class="mb-3 mt-0 font-black text-xl">{{ slotProps.data.locationName }}</p> -->
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2">
                     <img height="28" width="28" :src="`/weatherIcon/${getWeatherIcon(slotProps.data.weatherElement[0].time[0].parameter.parameterValue)}`" :alt="slotProps.data.weatherElement[0].time[0].parameter.parameterName">
-                    <p class="m-0  text-zinc-500">{{ slotProps.data.weatherElement[0].time[0].parameter.parameterName }}</p>
+                    <p class="m-0 text-zinc-500 text-xs sm:text-base">{{ slotProps.data.weatherElement[0].time[0].parameter.parameterName }}</p>
                 </div>
                 <div class="flex items-center gap-1">
                     <span class="material-symbols-outlined mt-1 text-orange-500" >device_thermostat</span>
-                    <p  class="m-0 text-zinc-500 ">{{ slotProps.data.weatherElement[2].time[0].parameter.parameterName }} ~ {{ slotProps.data.weatherElement[4].time[0].parameter.parameterName }} °C</p>
+                    <p  class="m-0 text-zinc-500 text-xs sm:text-base">{{ slotProps.data.weatherElement[2].time[0].parameter.parameterName }} ~ {{ slotProps.data.weatherElement[4].time[0].parameter.parameterName }} °C</p>
                 </div>
             </div>
             <!-- <p class="mt-0 mb-1">降雨機率 {{slotProps.data.weatherElement[1].time[0].parameter.parameterName}} %</p> -->

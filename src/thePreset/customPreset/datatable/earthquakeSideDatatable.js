@@ -1110,7 +1110,7 @@ export default {
       { 'odd:bg-surface-0 odd:text-surface-600 even:bg-surface-50 even:text-surface-600': context.stripedRows },
 
       // State
-      { 'focus:outline-none focus:outline-offset-0 focus:ring focus:ring-primary-400/50 ring-inset dark:focus:ring-primary-300/50': context.selectable },
+      { 'focus:outline-none focus:outline-offset-0 focus:ring-0 focus:ring-primary-400/50 ring-inset dark:focus:ring-primary-300/50': context.selectable },
       { 'hover:bg-surface-300/20 hover:text-surface-600': props.selectionMode && !context.selected },
 
       // Transition

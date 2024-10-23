@@ -61,15 +61,15 @@ export default {
       // Size and Spacing
       'mr-2 ',
       'last:mr-0',
-      'w-8 h-8',
+      'w-6 h-6',
 
       // Shape
-      'border-0',
+      //'border-0',
       'rounded-full',
 
       // Colors
       'text-surface-100 dark:text-surface-600',
-      'bg-gray-100 dark:bg-surface-100',
+      //'bg-gray-100 dark:bg-surface-100',
 
       // Transitions
       'transition duration-200 ease-in-out',
@@ -77,8 +77,8 @@ export default {
       // States
       'hover:text-surface-100 dark:hover:text-surface-100',
       'hover:gray-200',
-      'focus:outline-none focus:outline-offset-0 focus:ring focus:ring-inset',
-      'focus:ring-primary-400/50 dark:focus:ring-primary-300/50',
+      'focus:outline-none focus:outline-offset-0 focus:ring-0 focus:ring-inset',
+     // 'focus:ring-primary-400/50 dark:focus:ring-primary-300/50',
 
       // Misc
       'overflow-hidden',

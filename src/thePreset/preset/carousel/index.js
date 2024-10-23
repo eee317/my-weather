@@ -92,12 +92,12 @@ export default {
   item: ({ props }) => ({
     class: [
       // Flexbox
-      'flex shrink-0 grow ',
+      'flex shrink-0 grow gap-3',
 
       // Size
       {
-        //w-full
-        ' sm:w-[50%] md:w-[33.333333333333336%]': props.orientation !== 'vertical',
+        //w-full sm:w-[50%] md:w-[33.333333333333336%]
+        'w-full sm:w-[50%] md:w-[33.333333333333336%]': props.orientation !== 'vertical',
 
         'w-full h-full': props.orientation == 'vertical',
       },
@@ -111,8 +111,8 @@ export default {
 
       // Size
       {
-        //w-full
-        ' sm:w-[50%] md:w-[33.333333333333336%]': props.orientation !== 'vertical',
+        //w-full sm:w-[50%] md:w-[33.333333333333336%]
+        'w-full sm:w-[50%] md:w-[33.333333333333336%]': props.orientation !== 'vertical',
 
         'w-full h-full': props.orientation == 'vertical',
       },
@@ -121,7 +121,7 @@ export default {
   indicators: {
     class: [
       // Flexbox & Alignment
-      'flex flex-row justify-center flex-wrap list-none mt-12',
+      'flex flex-row justify-center flex-wrap list-none mt-4 sm:mt-12',
     ],
   },
   indicator: {

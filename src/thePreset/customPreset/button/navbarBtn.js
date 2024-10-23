@@ -29,7 +29,7 @@ export const btnNavbarClass = {
         },
 
         // --- Severity Button States ---
-        'focus:outline-none focus:outline-offset-0 focus:ring',
+       // 'focus:outline-none focus:outline-offset-0 focus:ring',
 
         // Disabled
         { 'opacity-50 pointer-events-none cursor-default': context.disabled },

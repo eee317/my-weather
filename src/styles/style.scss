@@ -8,9 +8,11 @@
 
 
 
-
 // @layer tailwind-base, tailwind-components, tailwind-utilities;
-@layer tailwind-base, components, tailwind-utilities;
+// @layer tailwind-base, components, tailwind-utilities;
+@layer tailwind-base {
+  @import 'tailwindcss/base';
+}
 
 @layer tailwind-components {
   @import 'tailwindcss/components';

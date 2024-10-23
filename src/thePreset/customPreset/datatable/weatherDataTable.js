@@ -47,11 +47,11 @@ export default {
       'rounded-t-md bg-primary-50 text-primary-600',
 
       // Shape
-      props.showGridlines ? 'border-x border-t border-b-0' : 'border-y border-x-0',
+      //props.showGridlines ? 'border-x border-t border-b-0' : 'border-y border-x-0',
 
       // Color
       ' dark:bg-surface-800',
-      'border-surface-200 dark:border-surface-700',
+      //'border-surface-200 dark:border-surface-700',
       ' dark:text-white/80',
     ],
   }),

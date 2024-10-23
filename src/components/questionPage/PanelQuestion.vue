@@ -2,8 +2,10 @@
   import { ref } from 'vue';
   const panelClass = ref({
     root:{
-      class:['border-2 border-primary-400 border-solid rounded-lg']
-    }
+      class:['border-2 border-primary-400 border-solid rounded-lg'],
+    },
+    header: { class:'p-5'},
+    content: { class:'px-5 pb-5'},
   }) 
 </script>
 <template>

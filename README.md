@@ -15,6 +15,11 @@ sass 1.79.3
 tailwindcss 3.4.13
 primevue 3.53.0
 ```
+## 網站畫面
+![image](https://github.com/user-attachments/assets/06384acf-decb-4ec7-bf78-76f2a3048d33)
+![image](https://github.com/user-attachments/assets/af530b0f-46fa-4923-953b-ce4366fbdb31)
+
+
 
 ### 安裝指南
 
